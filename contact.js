@@ -29,6 +29,57 @@ const formStatus =
 
 
 /* =========================================
+   LANGUAGE MESSAGES
+========================================= */
+
+const contactMessages = {
+
+    en: {
+        sending: "Sending message...",
+        success: "✓ Message sent successfully!",
+        error: "Message could not be sent."
+    },
+
+    es: {
+        sending: "Enviando mensaje...",
+        success: "✓ ¡Mensaje enviado correctamente!",
+        error: "No se pudo enviar el mensaje."
+    }
+
+};
+
+
+function getCurrentLanguage() {
+
+    if (
+        window.WebNanzLanguage &&
+        window.WebNanzLanguage.getLanguage
+    ) {
+
+        return window.WebNanzLanguage.getLanguage();
+
+    }
+
+    return "en";
+
+}
+
+
+function getContactMessage(type) {
+
+    const language =
+        getCurrentLanguage();
+
+    const messages =
+        contactMessages[language] ||
+        contactMessages.en;
+
+    return messages[type];
+
+}
+
+
+/* =========================================
    OPEN PROJECT FORM
 ========================================= */
 
@@ -168,7 +219,7 @@ if (projectForm) {
             if (formStatus) {
 
                 formStatus.textContent =
-                    "Sending message...";
+                    getContactMessage("sending");
 
             }
 
@@ -255,7 +306,7 @@ if (projectForm) {
                 if (formStatus) {
 
                     formStatus.textContent =
-                        "✓ Message sent successfully!";
+                        getContactMessage("success");
 
                 }
 
@@ -288,7 +339,7 @@ if (projectForm) {
                 if (formStatus) {
 
                     formStatus.textContent =
-                        "Message could not be sent.";
+                        getContactMessage("error");
 
                 }
 

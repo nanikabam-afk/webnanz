@@ -7,14 +7,73 @@
     <title>WebNanz</title>
 
     <link rel="stylesheet" href="style.css">
+
+    <style>
+        .language-switch {
+            position: fixed;
+            top: 16px;
+            right: 16px;
+            z-index: 99999;
+            display: flex;
+            gap: 6px;
+            padding: 6px;
+            border: 1px solid rgba(0, 238, 255, 0.6);
+            border-radius: 999px;
+            background: rgba(5, 8, 24, 0.88);
+            backdrop-filter: blur(10px);
+            box-shadow:
+                0 0 12px rgba(0, 238, 255, 0.35),
+                0 0 22px rgba(204, 0, 255, 0.18);
+        }
+
+        .language-button {
+            min-width: 44px;
+            border: 0;
+            border-radius: 999px;
+            padding: 8px 11px;
+            cursor: pointer;
+            font: inherit;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.08em;
+            color: #dffcff;
+            background: transparent;
+        }
+
+        .language-button.active {
+            color: #050818;
+            background: linear-gradient(135deg, #00f0ff, #d946ef);
+            box-shadow: 0 0 12px rgba(0, 240, 255, 0.55);
+        }
+    </style>
 </head>
 
 <body>
+
+    <div class="language-switch" role="group" aria-label="Language selector">
+        <button
+            type="button"
+            class="language-button active"
+            id="langEN"
+            aria-pressed="true">
+            EN
+        </button>
+
+        <button
+            type="button"
+            class="language-button"
+            id="langES"
+            aria-pressed="false">
+            ES
+        </button>
+    </div>
 
     <main class="mobile-site">
 
         <img
             src="assets/images/webcraft-mobile-bg.png"
+            data-bg-en="assets/images/webcraft-mobile-bg.png"
+            data-bg-es="assets/images/webcraft-mobile-bg-es.png"
             alt="WebNanz mobile website"
             class="background-image"
         >
@@ -110,17 +169,16 @@
             aria-label="Message WebNanz">
         </button>
 
-
         <!-- STAFF LOGIN -->
 
         <a
             href="staff-login.html"
-            class="staff-login-link">
+            class="staff-login-link"
+            data-i18n="staffLogin">
             STAFF LOGIN
         </a>
 
     </main>
-
 
     <!-- INFORMATION PANEL -->
 
@@ -140,15 +198,21 @@
                 ×
             </button>
 
-            <p class="system-label">
+            <p
+                class="system-label"
+                data-i18n="informationLabel">
                 WEBNANZ // INFORMATION
             </p>
 
-            <h2 id="modalTitle">
+            <h2
+                id="modalTitle"
+                data-i18n="service">
                 Service
             </h2>
 
-            <p id="modalText">
+            <p
+                id="modalText"
+                data-i18n="informationPlaceholder">
                 Information will appear here.
             </p>
 
@@ -156,14 +220,14 @@
 
             <button
                 class="modal-project-button"
-                id="modalProjectButton">
+                id="modalProjectButton"
+                data-i18n="startProject">
                 START YOUR PROJECT
             </button>
 
         </section>
 
     </div>
-
 
     <!-- CUSTOMER MESSAGE / PROJECT FORM -->
 
@@ -185,15 +249,19 @@
                 ×
             </button>
 
-            <p class="system-label">
+            <p
+                class="system-label"
+                data-i18n="projectRequestLabel">
                 WEBNANZ // PROJECT REQUEST
             </p>
 
-            <h2>
+            <h2 data-i18n="letsBuild">
                 Let's Build Something.
             </h2>
 
-            <p class="project-intro">
+            <p
+                class="project-intro"
+                data-i18n="projectIntro">
                 Tell us what you need and WebNanz will get back to you.
             </p>
 
@@ -201,7 +269,9 @@
 
                 <div class="form-group">
 
-                    <label for="customerName">
+                    <label
+                        for="customerName"
+                        data-i18n="yourName">
                         Your Name
                     </label>
 
@@ -211,10 +281,11 @@
                         required>
                 </div>
 
-
                 <div class="form-group">
 
-                    <label for="customerEmail">
+                    <label
+                        for="customerEmail"
+                        data-i18n="email">
                         Email
                     </label>
 
@@ -224,10 +295,11 @@
                         required>
                 </div>
 
-
                 <div class="form-group">
 
-                    <label for="customerPhone">
+                    <label
+                        for="customerPhone"
+                        data-i18n="phone">
                         Phone
                     </label>
 
@@ -236,10 +308,11 @@
                         id="customerPhone">
                 </div>
 
-
                 <div class="form-group">
 
-                    <label for="businessName">
+                    <label
+                        for="businessName"
+                        data-i18n="businessName">
                         Business Name
                     </label>
 
@@ -248,10 +321,11 @@
                         id="businessName">
                 </div>
 
-
                 <div class="form-group">
 
-                    <label for="projectType">
+                    <label
+                        for="projectType"
+                        data-i18n="whatNeed">
                         What do you need?
                     </label>
 
@@ -259,35 +333,51 @@
                         id="projectType"
                         required>
 
-                        <option value="">
+                        <option
+                            value=""
+                            data-i18n="chooseService">
                             Choose a service
                         </option>
 
-                        <option value="Web Design">
+                        <option
+                            value="Web Design"
+                            data-i18n="webDesign">
                             Web Design
                         </option>
 
-                        <option value="Web Development">
+                        <option
+                            value="Web Development"
+                            data-i18n="webDevelopment">
                             Web Development
                         </option>
 
-                        <option value="E-Commerce">
+                        <option
+                            value="E-Commerce"
+                            data-i18n="ecommerce">
                             E-Commerce
                         </option>
 
-                        <option value="Mobile Experiences">
+                        <option
+                            value="Mobile Experiences"
+                            data-i18n="mobileExperiences">
                             Mobile Experiences
                         </option>
 
-                        <option value="SEO & Performance">
+                        <option
+                            value="SEO & Performance"
+                            data-i18n="seoPerformance">
                             SEO & Performance
                         </option>
 
-                        <option value="Maintenance & Support">
+                        <option
+                            value="Maintenance & Support"
+                            data-i18n="maintenanceSupport">
                             Maintenance & Support
                         </option>
 
-                        <option value="Other">
+                        <option
+                            value="Other"
+                            data-i18n="other">
                             Other
                         </option>
 
@@ -295,20 +385,25 @@
 
                 </div>
 
-
                 <div class="form-group">
 
-                    <label for="budget">
+                    <label
+                        for="budget"
+                        data-i18n="budget">
                         Budget
                     </label>
 
                     <select id="budget">
 
-                        <option value="Not sure">
+                        <option
+                            value="Not sure"
+                            data-i18n="notSure">
                             Not sure yet
                         </option>
 
-                        <option value="Under $500">
+                        <option
+                            value="Under $500"
+                            data-i18n="under500">
                             Under $500
                         </option>
 
@@ -328,24 +423,31 @@
 
                 </div>
 
-
                 <div class="form-group">
 
-                    <label for="preferredContact">
+                    <label
+                        for="preferredContact"
+                        data-i18n="preferredContact">
                         Preferred Contact
                     </label>
 
                     <select id="preferredContact">
 
-                        <option value="Phone">
+                        <option
+                            value="Phone"
+                            data-i18n="phone">
                             Phone
                         </option>
 
-                        <option value="Text">
+                        <option
+                            value="Text"
+                            data-i18n="text">
                             Text
                         </option>
 
-                        <option value="Email">
+                        <option
+                            value="Email"
+                            data-i18n="email">
                             Email
                         </option>
 
@@ -357,10 +459,11 @@
 
                 </div>
 
-
                 <div class="form-group">
 
-                    <label for="customerMessage">
+                    <label
+                        for="customerMessage"
+                        data-i18n="yourMessage">
                         Your Message
                     </label>
 
@@ -368,17 +471,17 @@
                         id="customerMessage"
                         rows="6"
                         required
-                        placeholder="Tell WebNanz about your project..."></textarea>
+                        placeholder="Tell WebNanz about your project..."
+                        data-i18n-placeholder="messagePlaceholder"></textarea>
 
                 </div>
 
-
                 <button
                     type="submit"
-                    class="submit-project">
+                    class="submit-project"
+                    data-i18n="sendMessage">
                     SEND MESSAGE
                 </button>
-
 
                 <p
                     class="form-status"
@@ -387,10 +490,9 @@
 
             </form>
 
-
             <div class="direct-contact">
 
-                <p>
+                <p data-i18n="preferTalk">
                     Prefer to talk?
                 </p>
 
@@ -404,6 +506,403 @@
 
     </div>
 
+    <!-- LANGUAGE SYSTEM -->
+
+    <script>
+
+        const translations = {
+
+            en: {
+
+                staffLogin: "STAFF LOGIN",
+
+                informationLabel:
+                "WEBNANZ // INFORMATION",
+
+                service:
+                "Service",
+
+                informationPlaceholder:
+                "Information will appear here.",
+
+                startProject:
+                "START YOUR PROJECT",
+
+                projectRequestLabel:
+                "WEBNANZ // PROJECT REQUEST",
+
+                letsBuild:
+                "Let's Build Something.",
+
+                projectIntro:
+                "Tell us what you need and WebNanz will get back to you.",
+
+                yourName:
+                "Your Name",
+
+                email:
+                "Email",
+
+                phone:
+                "Phone",
+
+                businessName:
+                "Business Name",
+
+                whatNeed:
+                "What do you need?",
+
+                chooseService:
+                "Choose a service",
+
+                webDesign:
+                "Web Design",
+
+                webDevelopment:
+                "Web Development",
+
+                ecommerce:
+                "E-Commerce",
+
+                mobileExperiences:
+                "Mobile Experiences",
+
+                seoPerformance:
+                "SEO & Performance",
+
+                maintenanceSupport:
+                "Maintenance & Support",
+
+                other:
+                "Other",
+
+                budget:
+                "Budget",
+
+                notSure:
+                "Not sure yet",
+
+                under500:
+                "Under $500",
+
+                preferredContact:
+                "Preferred Contact",
+
+                text:
+                "Text",
+
+                yourMessage:
+                "Your Message",
+
+                messagePlaceholder:
+                "Tell WebNanz about your project...",
+
+                sendMessage:
+                "SEND MESSAGE",
+
+                preferTalk:
+                "Prefer to talk?"
+
+            },
+
+            es: {
+
+                staffLogin:
+                "ACCESO DEL PERSONAL",
+
+                informationLabel:
+                "WEBNANZ // INFORMACIÓN",
+
+                service:
+                "Servicio",
+
+                informationPlaceholder:
+                "La información aparecerá aquí.",
+
+                startProject:
+                "COMIENZA TU PROYECTO",
+
+                projectRequestLabel:
+                "WEBNANZ // SOLICITUD DE PROYECTO",
+
+                letsBuild:
+                "Vamos a Crear Algo.",
+
+                projectIntro:
+                "Cuéntanos qué necesitas y WebNanz se comunicará contigo.",
+
+                yourName:
+                "Tu Nombre",
+
+                email:
+                "Correo Electrónico",
+
+                phone:
+                "Teléfono",
+
+                businessName:
+                "Nombre del Negocio",
+
+                whatNeed:
+                "¿Qué necesitas?",
+
+                chooseService:
+                "Selecciona un servicio",
+
+                webDesign:
+                "Diseño Web",
+
+                webDevelopment:
+                "Desarrollo Web",
+
+                ecommerce:
+                "Comercio Electrónico",
+
+                mobileExperiences:
+                "Experiencias Móviles",
+
+                seoPerformance:
+                "SEO y Rendimiento",
+
+                maintenanceSupport:
+                "Mantenimiento y Soporte",
+
+                other:
+                "Otro",
+
+                budget:
+                "Presupuesto",
+
+                notSure:
+                "Aún no estoy seguro",
+
+                under500:
+                "Menos de $500",
+
+                preferredContact:
+                "Método de Contacto Preferido",
+
+                text:
+                "Mensaje de Texto",
+
+                yourMessage:
+                "Tu Mensaje",
+
+                messagePlaceholder:
+                "Cuéntale a WebNanz sobre tu proyecto...",
+
+                sendMessage:
+                "ENVIAR MENSAJE",
+
+                preferTalk:
+                "¿Prefieres hablar?"
+
+            }
+
+        };
+
+        const langEN =
+        document.getElementById("langEN");
+
+        const langES =
+        document.getElementById("langES");
+
+        const background =
+        document.querySelector(".background-image");
+
+        function changeLanguage(language) {
+
+            const words =
+            translations[language];
+
+            document.documentElement.lang =
+            language;
+
+            document
+            .querySelectorAll("[data-i18n]")
+            .forEach(element => {
+
+                const translationKey =
+                element.getAttribute("data-i18n");
+
+                if (
+                    words[translationKey] !== undefined
+                ) {
+
+                    element.textContent =
+                    words[translationKey];
+
+                }
+
+            });
+
+            document
+            .querySelectorAll(
+                "[data-i18n-placeholder]"
+            )
+            .forEach(element => {
+
+                const translationKey =
+                element.getAttribute(
+                    "data-i18n-placeholder"
+                );
+
+                if (
+                    words[translationKey] !== undefined
+                ) {
+
+                    element.placeholder =
+                    words[translationKey];
+
+                }
+
+            });
+
+            langEN.classList.toggle(
+                "active",
+                language === "en"
+            );
+
+            langES.classList.toggle(
+                "active",
+                language === "es"
+            );
+
+            langEN.setAttribute(
+                "aria-pressed",
+                String(language === "en")
+            );
+
+            langES.setAttribute(
+                "aria-pressed",
+                String(language === "es")
+            );
+
+            localStorage.setItem(
+                "webnanzLanguage",
+                language
+            );
+
+            if (background) {
+
+                const englishBackground =
+                background.dataset.bgEn;
+
+                const spanishBackground =
+                background.dataset.bgEs;
+
+                if (
+                    language === "es" &&
+                    spanishBackground
+                ) {
+
+                    const tester =
+                    new Image();
+
+                    tester.onload =
+                    function () {
+
+                        background.src =
+                        spanishBackground;
+
+                    };
+
+                    tester.onerror =
+                    function () {
+
+                        background.src =
+                        englishBackground;
+
+                    };
+
+                    tester.src =
+                    spanishBackground;
+
+                }
+
+                else {
+
+                    background.src =
+                    englishBackground;
+
+                }
+
+            }
+
+            window.dispatchEvent(
+
+                new CustomEvent(
+                    "webnanz-language-change",
+                    {
+
+                        detail: {
+                            language: language
+                        }
+
+                    }
+                )
+
+            );
+
+        }
+
+        langEN.addEventListener(
+            "click",
+            function () {
+
+                changeLanguage("en");
+
+            }
+        );
+
+        langES.addEventListener(
+            "click",
+            function () {
+
+                changeLanguage("es");
+
+            }
+        );
+
+        const savedLanguage =
+        localStorage.getItem(
+            "webnanzLanguage"
+        );
+
+        if (savedLanguage === "es") {
+
+            changeLanguage("es");
+
+        }
+
+        else {
+
+            changeLanguage("en");
+
+        }
+
+        window.WebNanzLanguage = {
+
+            changeLanguage:
+            changeLanguage,
+
+            getLanguage:
+            function () {
+
+                return (
+                    localStorage.getItem(
+                        "webnanzLanguage"
+                    ) || "en"
+                );
+
+            },
+
+            translations:
+            translations
+
+        };
+
+    </script>
 
     <script src="script.js"></script>
 

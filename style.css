@@ -2839,4 +2839,307 @@ body {
     }
 
 }
+/* =========================================
+   WEBNANZ SERVICE LINE ITEMS
+========================================= */
 
+.line-items-section {
+    margin-top: 18px;
+    margin-bottom: 26px;
+    padding: 18px;
+
+    border: 1px solid rgba(77, 239, 255, 0.18);
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 229, 255, 0.035),
+            rgba(229, 0, 255, 0.025)
+        );
+}
+
+
+.line-items-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 16px;
+}
+
+
+.line-items-heading h4 {
+    margin: 4px 0 0;
+
+    color: #ffffff;
+
+    font-size: 15px;
+}
+
+
+.add-line-item-button {
+    padding: 10px 14px;
+
+    color: #5ff6ff;
+
+    border: 1px solid rgba(77, 239, 255, 0.55);
+    border-radius: 7px;
+
+    background:
+        rgba(0, 229, 255, 0.06);
+
+    font-size: 10px;
+    font-weight: 700;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+.add-line-item-button:hover {
+    color: #ffffff;
+
+    border-color: #5ff6ff;
+
+    box-shadow:
+        0 0 16px rgba(77, 239, 255, 0.16);
+}
+
+
+/* SERVICE ROW */
+
+.line-item-row {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        150px
+        42px;
+
+    gap: 10px;
+
+    margin-bottom: 10px;
+}
+
+
+/* SERVICE DESCRIPTION + PRICE */
+
+.line-item-description,
+.line-item-price {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 12px 13px;
+
+    color: #ffffff;
+
+    border: 1px solid rgba(77, 239, 255, 0.35);
+    border-radius: 7px;
+
+    outline: none;
+
+    background: #020b1c;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    font-size: 13px;
+
+    transition: 0.2s ease;
+}
+
+
+.line-item-description:focus,
+.line-item-price:focus {
+    border-color: #5ff6ff;
+
+    box-shadow:
+        0 0 0 1px #5ff6ff,
+        0 0 12px rgba(77, 239, 255, 0.14);
+}
+
+
+.line-item-description::placeholder,
+.line-item-price::placeholder {
+    color: #6f8094;
+}
+
+
+/* REMOVE SERVICE */
+
+.remove-line-item {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+
+    border: 1px solid rgba(255, 78, 143, 0.55);
+    border-radius: 7px;
+
+    color: #ff6d9e;
+
+    background:
+        rgba(255, 78, 143, 0.06);
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+
+.remove-line-item:hover {
+    color: #ffffff;
+
+    border-color: #ff4f91;
+
+    background:
+        rgba(255, 78, 143, 0.14);
+
+    box-shadow:
+        0 0 14px rgba(255, 78, 143, 0.14);
+}
+
+
+/* QUOTED PRICE LOOKS LIKE CALCULATED FIELD */
+
+#profileQuotedPrice {
+    color: #5ff6ff;
+
+    font-weight: 700;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(0, 229, 255, 0.08),
+            rgba(170, 60, 255, 0.05)
+        );
+}
+
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+
+    .line-items-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+
+    .add-line-item-button {
+        width: 100%;
+    }
+
+
+    .line-item-row {
+        grid-template-columns:
+            minmax(0, 1fr)
+            105px
+            40px;
+    }
+
+}
+/* =========================================
+   WEBNANZ LANGUAGE SWITCH
+========================================= */
+
+.language-switch {
+    position: fixed !important;
+    top: 18px !important;
+    right: 18px !important;
+    z-index: 999999 !important;
+
+    display: flex !important;
+    align-items: center;
+    gap: 5px;
+
+    padding: 5px;
+
+    background: rgba(4, 8, 20, 0.92);
+
+    border: 1px solid #00eaff;
+    border-radius: 30px;
+
+    box-shadow:
+        0 0 10px rgba(0, 234, 255, 0.7),
+        0 0 20px rgba(211, 61, 255, 0.35);
+}
+
+.language-button {
+    display: block !important;
+    min-width: 46px;
+    padding: 9px 12px;
+
+    border: none;
+    border-radius: 22px;
+
+    background: transparent;
+    color: white;
+
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    position: relative;
+    z-index: 1000000;
+}
+
+.language-button.active {
+    color: #050816;
+
+    background: linear-gradient(
+        135deg,
+        #00eaff,
+        #b83cff,
+        #ff4bd8
+    );
+
+    box-shadow:
+        0 0 12px rgba(0, 234, 255, 0.8);
+}
+
+.language-button:hover {
+    transform: scale(1.05);
+}
+
+
+/* =========================================
+   MOBILE STAFF LOGIN FIX
+========================================= */
+
+@media (max-width: 768px) {
+
+    .staff-login-link {
+        position: relative !important;
+        display: block !important;
+
+        margin-top: 24px !important;
+        margin-bottom: 28px !important;
+
+        bottom: auto !important;
+        top: auto !important;
+
+        z-index: 50 !important;
+    }
+
+    .direct-contact {
+        margin-top: 20px !important;
+        padding-bottom: 30px !important;
+    }
+
+}
