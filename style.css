@@ -3143,3 +3143,992 @@ body {
     }
 
 }
+/* =========================================
+   WEBNANZ CLICK FIX
+========================================= */
+
+.background-image {
+    pointer-events: none !important;
+}
+
+.hotspot {
+    pointer-events: auto !important;
+    touch-action: manipulation !important;
+    cursor: pointer !important;
+    z-index: 100 !important;
+}
+
+.start-project,
+.service,
+.process,
+.contact {
+    pointer-events: auto !important;
+}
+/* =========================================================
+   WEBNANZ - FINAL MOBILE BUTTON + LANGUAGE SWITCH FIX
+   PASTE THIS AT THE VERY BOTTOM OF style.css
+========================================================= */
+
+
+/* =========================================================
+   BACKGROUND MUST NOT BLOCK BUTTONS
+========================================================= */
+
+.background-image {
+    pointer-events: none !important;
+}
+
+
+/* =========================================================
+   ALL INVISIBLE WEBSITE BUTTONS
+========================================================= */
+
+.hotspot {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    touch-action: manipulation !important;
+    z-index: 100 !important;
+}
+
+
+/* =========================================================
+   START YOUR PROJECT
+   Bigger click area + slightly higher
+========================================================= */
+
+.start-project {
+    top: 40.4% !important;
+    left: 5.1% !important;
+
+    width: 38% !important;
+    height: 5.4% !important;
+
+    border-radius: 15px !important;
+
+    pointer-events: auto !important;
+}
+
+
+/* =========================================================
+   SERVICE CARDS
+   Moves click area UP and makes it taller
+========================================================= */
+
+.service {
+    top: 64.8% !important;
+
+    height: 13.8% !important;
+
+    border-radius: 15px !important;
+
+    pointer-events: auto !important;
+}
+
+
+/* WEB DESIGN */
+
+.web-design {
+    left: 2.5% !important;
+    width: 15% !important;
+}
+
+
+/* WEB DEVELOPMENT */
+
+.web-development {
+    left: 18.4% !important;
+    width: 15% !important;
+}
+
+
+/* E-COMMERCE */
+
+.ecommerce {
+    left: 34.3% !important;
+    width: 15% !important;
+}
+
+
+/* MOBILE EXPERIENCES */
+
+.mobile-experiences {
+    left: 50.2% !important;
+    width: 15% !important;
+}
+
+
+/* SEO & PERFORMANCE */
+
+.seo {
+    left: 66.1% !important;
+    width: 15% !important;
+}
+
+
+/* MAINTENANCE & SUPPORT */
+
+.maintenance {
+    left: 82% !important;
+    width: 15% !important;
+}
+
+
+/* =========================================================
+   PROCESS BUTTONS
+   CONSULT / DESIGN / BUILD / LAUNCH
+========================================================= */
+
+.process {
+    top: 81.2% !important;
+
+    width: 15% !important;
+    height: 9.5% !important;
+
+    border-radius: 50% !important;
+
+    pointer-events: auto !important;
+}
+
+
+/* CONSULT */
+
+.consult {
+    left: 7% !important;
+}
+
+
+/* DESIGN */
+
+.design {
+    left: 27% !important;
+}
+
+
+/* BUILD */
+
+.build {
+    left: 49% !important;
+}
+
+
+/* LAUNCH */
+
+.launch {
+    left: 72% !important;
+}
+
+
+/* =========================================================
+   CONTACT BUTTONS
+========================================================= */
+
+.contact {
+    pointer-events: auto !important;
+}
+
+
+/* =========================================================
+   EN / ES LANGUAGE SELECTOR
+========================================================= */
+
+.language-switch {
+
+    position: fixed !important;
+
+    top: 16px !important;
+
+    /*
+       IMPORTANT:
+       Do NOT force the switch to stay on the right.
+       JavaScript controls the LEFT position when dragged.
+    */
+
+    right: auto !important;
+
+    z-index: 999999 !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    gap: 5px !important;
+
+    padding: 5px !important;
+
+    border:
+        1px solid
+        rgba(
+            0,
+            238,
+            255,
+            0.65
+        ) !important;
+
+    border-radius: 999px !important;
+
+    background:
+        rgba(
+            5,
+            8,
+            24,
+            0.92
+        ) !important;
+
+    backdrop-filter:
+        blur(10px);
+
+    -webkit-backdrop-filter:
+        blur(10px);
+
+    box-shadow:
+
+        0 0 12px
+        rgba(
+            0,
+            238,
+            255,
+            0.35
+        ),
+
+        0 0 22px
+        rgba(
+            204,
+            0,
+            255,
+            0.18
+        );
+}
+
+
+/* =========================================================
+   EN / ES BUTTONS
+========================================================= */
+
+.language-button {
+
+    min-width: 44px;
+
+    border: 0;
+
+    border-radius: 999px;
+
+    padding: 8px 11px;
+
+    cursor: pointer;
+
+    font: inherit;
+
+    font-size: 12px;
+
+    font-weight: 800;
+
+    letter-spacing: 0.08em;
+
+    color: #dffcff;
+
+    background: transparent;
+
+    pointer-events: auto !important;
+}
+
+
+/* ACTIVE LANGUAGE */
+
+.language-button.active {
+
+    color: #050818;
+
+    background:
+
+        linear-gradient(
+            135deg,
+            #00f0ff,
+            #d946ef
+        );
+
+    box-shadow:
+
+        0 0 12px
+        rgba(
+            0,
+            240,
+            255,
+            0.55
+        );
+}
+
+
+/* =========================================================
+   ↔ MOVE BUTTON
+========================================================= */
+
+.language-move-button {
+
+    width: 32px !important;
+
+    height: 32px !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    flex-shrink: 0;
+
+    padding: 0 !important;
+
+    border:
+
+        1px solid
+        rgba(
+            217,
+            70,
+            239,
+            0.55
+        ) !important;
+
+    border-radius: 50% !important;
+
+    background:
+
+        rgba(
+            255,
+            255,
+            255,
+            0.05
+        ) !important;
+
+    color: white !important;
+
+    font-size: 17px !important;
+
+    line-height: 1 !important;
+
+    cursor: grab !important;
+
+    /*
+       VERY IMPORTANT FOR PHONE DRAGGING
+    */
+
+    touch-action: none !important;
+
+    user-select: none !important;
+
+    -webkit-user-select: none !important;
+
+    pointer-events: auto !important;
+
+    position: relative;
+
+    z-index: 1000000;
+}
+
+
+.language-move-button:active {
+
+    cursor: grabbing !important;
+
+}
+
+
+/* =========================================================
+   WHEN JAVASCRIPT MOVES THE SWITCH
+========================================================= */
+
+.language-switch[style*="left"] {
+
+    right: auto !important;
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+
+    .language-switch {
+
+        top: 10px !important;
+
+    }
+
+
+    .language-button {
+
+        min-width: 39px;
+
+        padding: 7px 9px;
+
+        font-size: 11px;
+
+    }
+
+
+    .language-move-button {
+
+        width: 30px !important;
+
+        height: 30px !important;
+
+        font-size: 16px !important;
+
+    }
+
+
+}
+
+
+/* =========================================================
+   EXTRA SMALL PHONES
+========================================================= */
+
+@media (max-width: 480px) {
+
+
+    .language-switch {
+
+        top: 8px !important;
+
+    }
+
+
+    .language-button {
+
+        min-width: 36px;
+
+        padding: 6px 8px;
+
+        font-size: 10px;
+
+    }
+
+
+    .language-move-button {
+
+        width: 28px !important;
+
+        height: 28px !important;
+
+        font-size: 15px !important;
+
+    }
+
+
+}
+/* =========================================
+   MOVE LANGUAGE SWITCH AWAY FROM PROJECT X
+========================================= */
+
+body.project-open .language-switch {
+    left: 10px !important;
+    right: auto !important;
+}
+/* =========================================
+   MOVE LANGUAGE SWITCH AWAY FROM X
+========================================= */
+
+body.project-open .language-switch {
+    left: 10px !important;
+    right: auto !important;
+}
+/* =========================================================
+   WEBNANZ FINAL MOBILE ALIGNMENT FIX
+========================================================= */
+
+
+/* ---------------------------------------------------------
+   WHEN PROJECT FORM IS OPEN:
+   FORCE EN / ES TO THE LEFT
+--------------------------------------------------------- */
+
+body:has(.project-modal.active) .language-switch {
+    left: 10px !important;
+    right: auto !important;
+}
+
+
+/* Backup for the class added by contact.js */
+
+body.project-open .language-switch {
+    left: 10px !important;
+    right: auto !important;
+}
+
+
+/* ---------------------------------------------------------
+   KEEP THE PROJECT FORM X ABOVE EVERYTHING
+--------------------------------------------------------- */
+
+.project-close {
+    z-index: 2000000 !important;
+    pointer-events: auto !important;
+}
+
+
+/* ---------------------------------------------------------
+   START YOUR PROJECT CLICK AREA
+   Make the whole visible button clickable
+--------------------------------------------------------- */
+
+.start-project {
+    top: 39.2% !important;
+    left: 4.5% !important;
+
+    width: 40% !important;
+    height: 7% !important;
+
+    pointer-events: auto !important;
+    z-index: 200 !important;
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE
+--------------------------------------------------------- */
+
+@media (max-width: 600px) {
+
+    body:has(.project-modal.active) .language-switch,
+    body.project-open .language-switch {
+        left: 8px !important;
+        right: auto !important;
+        top: 8px !important;
+    }
+
+    .project-close {
+        top: 10px !important;
+        right: 12px !important;
+    }
+
+}
+/* =========================================================
+   WEBNANZ FINAL BUTTON + LANGUAGE SWITCH FIX
+========================================================= */
+
+
+/* ---------------------------------------------------------
+   BACKGROUND MUST NEVER BLOCK HOTSPOTS
+--------------------------------------------------------- */
+
+.background-image {
+    pointer-events: none !important;
+}
+
+
+/* ---------------------------------------------------------
+   ALL HOTSPOTS CLICKABLE
+--------------------------------------------------------- */
+
+.hotspot {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    touch-action: manipulation !important;
+    z-index: 200 !important;
+}
+
+
+/* ---------------------------------------------------------
+   START YOUR PROJECT
+   Move clickable area upward and make it taller
+--------------------------------------------------------- */
+
+.start-project {
+    top: 39.2% !important;
+    left: 4.2% !important;
+
+    width: 40% !important;
+    height: 7.2% !important;
+
+    border-radius: 16px !important;
+}
+
+
+/* ---------------------------------------------------------
+   SERVICE CARDS
+   Make the middle of every card clickable
+--------------------------------------------------------- */
+
+.service {
+    top: 63.8% !important;
+    height: 15.2% !important;
+
+    border-radius: 16px !important;
+}
+
+.web-design {
+    left: 2.2% !important;
+    width: 15.4% !important;
+}
+
+.web-development {
+    left: 18.1% !important;
+    width: 15.4% !important;
+}
+
+.ecommerce {
+    left: 34% !important;
+    width: 15.4% !important;
+}
+
+.mobile-experiences {
+    left: 49.9% !important;
+    width: 15.4% !important;
+}
+
+.seo {
+    left: 65.8% !important;
+    width: 15.4% !important;
+}
+
+.maintenance {
+    left: 81.7% !important;
+    width: 15.4% !important;
+}
+
+
+/* ---------------------------------------------------------
+   PROCESS BUTTONS
+--------------------------------------------------------- */
+
+.process {
+    top: 80.4% !important;
+
+    width: 16% !important;
+    height: 10.5% !important;
+
+    border-radius: 50% !important;
+}
+
+.consult {
+    left: 6.5% !important;
+}
+
+.design {
+    left: 26.5% !important;
+}
+
+.build {
+    left: 48.5% !important;
+}
+
+.launch {
+    left: 71.5% !important;
+}
+
+
+/* ---------------------------------------------------------
+   CONTACT BUTTONS
+--------------------------------------------------------- */
+
+.contact {
+    z-index: 200 !important;
+    pointer-events: auto !important;
+}
+
+
+/* ---------------------------------------------------------
+   KEEP X BUTTONS ABOVE EVERYTHING
+--------------------------------------------------------- */
+
+.close-modal,
+.project-close {
+    z-index: 3000000 !important;
+    pointer-events: auto !important;
+}
+
+
+/* ---------------------------------------------------------
+   MOVE LANGUAGE SWITCH LEFT WHEN INFO POPUP IS OPEN
+--------------------------------------------------------- */
+
+body:has(.info-modal.active) .language-switch {
+    left: 10px !important;
+    right: auto !important;
+}
+
+
+/* ---------------------------------------------------------
+   MOVE LANGUAGE SWITCH LEFT WHEN PROJECT FORM IS OPEN
+--------------------------------------------------------- */
+
+body:has(.project-modal.active) .language-switch,
+body.project-open .language-switch {
+    left: 10px !important;
+    right: auto !important;
+}
+
+
+/* ---------------------------------------------------------
+   LANGUAGE SWITCH ALWAYS ABOVE SITE,
+   BUT BELOW THE X BUTTON
+--------------------------------------------------------- */
+
+.language-switch {
+    z-index: 2000000 !important;
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE
+--------------------------------------------------------- */
+
+@media (max-width: 600px) {
+
+    body:has(.info-modal.active) .language-switch,
+    body:has(.project-modal.active) .language-switch,
+    body.project-open .language-switch {
+
+        left: 8px !important;
+        right: auto !important;
+        top: 8px !important;
+
+    }
+
+
+    .close-modal,
+    .project-close {
+
+        top: 8px !important;
+        right: 10px !important;
+
+        z-index: 3000000 !important;
+
+    }
+
+
+    .start-project {
+        top: 39% !important;
+        left: 4% !important;
+
+        width: 41% !important;
+        height: 7.5% !important;
+    }
+
+
+    .service {
+        top: 63.5% !important;
+        height: 15.8% !important;
+    }
+
+
+    .process {
+        top: 80.1% !important;
+        height: 11% !important;
+    }
+
+}
+/* =========================================================
+   MOBILE POPUP FIX — NEVER COVER THE X
+========================================================= */
+
+@media (max-width: 600px) {
+
+    /* Hide language selector only while a popup/form is open */
+    body:has(.info-modal.active) .language-switch,
+    body:has(.project-modal.active) .language-switch,
+    body.project-open .language-switch {
+        display: none !important;
+    }
+
+    /* Keep close X fully clickable */
+    .close-modal,
+    .project-close {
+        display: flex !important;
+        position: absolute !important;
+
+        top: 10px !important;
+        right: 12px !important;
+
+        z-index: 9999999 !important;
+        pointer-events: auto !important;
+    }
+
+}
+/* =========================================================
+   FIX EN / ES BLACK STRETCHING BAR
+========================================================= */
+
+.language-switch {
+    width: max-content !important;
+    min-width: max-content !important;
+    max-width: max-content !important;
+
+    display: inline-flex !important;
+    flex: 0 0 auto !important;
+
+    right: auto !important;
+
+    overflow: visible !important;
+}
+
+
+/* KEEP EACH LANGUAGE BUTTON COMPACT */
+
+.language-button,
+.language-move-button {
+    flex: 0 0 auto !important;
+}
+
+
+/* KEEP CLOSE X ABOVE LANGUAGE SWITCH */
+
+.close-modal,
+.project-close {
+    position: absolute !important;
+    z-index: 9999999 !important;
+    pointer-events: auto !important;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .language-switch {
+        width: max-content !important;
+        min-width: max-content !important;
+        max-width: max-content !important;
+
+        right: auto !important;
+    }
+
+}
+/* =========================================================
+   MOBILE ONLY — STOP LANGUAGE SWITCH BLACK BAR
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .language-switch {
+        position: fixed !important;
+
+        width: auto !important;
+        min-width: 0 !important;
+        max-width: none !important;
+
+        display: inline-flex !important;
+        flex: none !important;
+
+        left: auto;
+        right: auto !important;
+
+        padding: 4px !important;
+
+        overflow: visible !important;
+
+        background:
+            rgba(5, 8, 24, 0.92) !important;
+
+        border-radius: 999px !important;
+    }
+
+    .language-switch::before,
+    .language-switch::after {
+        display: none !important;
+        content: none !important;
+    }
+
+    .language-button,
+    .language-move-button {
+        flex: 0 0 auto !important;
+        width: auto;
+    }
+
+    .language-move-button {
+        width: 28px !important;
+        min-width: 28px !important;
+        max-width: 28px !important;
+    }
+
+}
+/* =========================================================
+   WEBNANZ MOBILE HOTSPOT ALIGNMENT FIX
+   Desktop stays unchanged
+========================================================= */
+
+@media (max-width: 600px) {
+
+    /* START YOUR PROJECT */
+    .start-project {
+        top: 37.8% !important;
+        left: 4.2% !important;
+
+        width: 40.5% !important;
+        height: 6.8% !important;
+    }
+
+
+    /* ALL 6 SERVICE CARDS */
+    .service {
+        top: 61.8% !important;
+        height: 14.5% !important;
+    }
+
+
+    .web-design {
+        left: 2.2% !important;
+        width: 15.4% !important;
+    }
+
+    .web-development {
+        left: 18.1% !important;
+        width: 15.4% !important;
+    }
+
+    .ecommerce {
+        left: 34% !important;
+        width: 15.4% !important;
+    }
+
+    .mobile-experiences {
+        left: 49.9% !important;
+        width: 15.4% !important;
+    }
+
+    .seo {
+        left: 65.8% !important;
+        width: 15.4% !important;
+    }
+
+    .maintenance {
+        left: 81.7% !important;
+        width: 15.4% !important;
+    }
+
+
+    /* PROCESS BUTTONS */
+    .process {
+        top: 78.5% !important;
+
+        width: 16% !important;
+        height: 9.8% !important;
+    }
+
+    .consult {
+        left: 6.5% !important;
+    }
+
+    .design {
+        left: 26.5% !important;
+    }
+
+    .build {
+        left: 48.5% !important;
+    }
+
+    .launch {
+        left: 71.5% !important;
+    }
+
+
+    /* CONTACT BUTTONS */
+    .contact {
+        top: 94.2% !important;
+        height: 3.8% !important;
+    }
+
+}
