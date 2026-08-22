@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WebNanz</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="mobile-site">
+
+        <img
+            src="assets/images/webcraft-mobile-bg.png"
+            alt="WebNanz mobile website"
+            class="background-image"
+        >
+
+        <!-- START YOUR PROJECT -->
+        <button
+            class="hotspot start-project"
+            id="startProjectButton"
+            data-action="project"
+            aria-label="Start your project">
+        </button>
+
+        <!-- SERVICES -->
+        <button
+            class="hotspot service web-design"
+            data-service="web-design"
+            aria-label="Web Design">
+        </button>
+
+        <button
+            class="hotspot service web-development"
+            data-service="web-development"
+            aria-label="Web Development">
+        </button>
+
+        <button
+            class="hotspot service ecommerce"
+            data-service="ecommerce"
+            aria-label="E-Commerce">
+        </button>
+
+        <button
+            class="hotspot service mobile-experiences"
+            data-service="mobile-experiences"
+            aria-label="Mobile Experiences">
+        </button>
+
+        <button
+            class="hotspot service seo"
+            data-service="seo"
+            aria-label="SEO and Performance">
+        </button>
+
+        <button
+            class="hotspot service maintenance"
+            data-service="maintenance"
+            aria-label="Maintenance and Support">
+        </button>
+
+        <!-- PROCESS -->
+        <button
+            class="hotspot process consult"
+            data-process="consult"
+            aria-label="Consult">
+        </button>
+
+        <button
+            class="hotspot process design"
+            data-process="design"
+            aria-label="Design">
+        </button>
+
+        <button
+            class="hotspot process build"
+            data-process="build"
+            aria-label="Build">
+        </button>
+
+        <button
+            class="hotspot process launch"
+            data-process="launch"
+            aria-label="Launch">
+        </button>
+
+        <!-- CONTACT BUTTONS -->
+
+        <a
+            class="hotspot contact whatsapp"
+            href="https://wa.me/17876314646"
+            target="_blank"
+            aria-label="WhatsApp WebNanz">
+        </a>
+
+        <a
+            class="hotspot contact phone"
+            href="tel:+17876314646"
+            aria-label="Call WebNanz">
+        </a>
+
+        <button
+            class="hotspot contact email"
+            id="messageButton"
+            aria-label="Message WebNanz">
+        </button>
+
+
+        <!-- STAFF LOGIN -->
+
+        <a
+            href="staff-login.html"
+            class="staff-login-link">
+            STAFF LOGIN
+        </a>
+
+    </main>
+
+
+    <!-- INFORMATION PANEL -->
+
+    <div class="info-modal" id="infoModal">
+
+        <div
+            class="modal-backdrop"
+            id="modalBackdrop">
+        </div>
+
+        <section class="info-panel">
+
+            <button
+                class="close-modal"
+                id="closeModal"
+                aria-label="Close">
+                ×
+            </button>
+
+            <p class="system-label">
+                WEBNANZ // INFORMATION
+            </p>
+
+            <h2 id="modalTitle">
+                Service
+            </h2>
+
+            <p id="modalText">
+                Information will appear here.
+            </p>
+
+            <div id="modalFeatures"></div>
+
+            <button
+                class="modal-project-button"
+                id="modalProjectButton">
+                START YOUR PROJECT
+            </button>
+
+        </section>
+
+    </div>
+
+
+    <!-- CUSTOMER MESSAGE / PROJECT FORM -->
+
+    <div
+        class="project-modal"
+        id="projectModal">
+
+        <div
+            class="project-backdrop"
+            id="projectBackdrop">
+        </div>
+
+        <section class="project-panel">
+
+            <button
+                class="project-close"
+                id="projectClose"
+                aria-label="Close">
+                ×
+            </button>
+
+            <p class="system-label">
+                WEBNANZ // PROJECT REQUEST
+            </p>
+
+            <h2>
+                Let's Build Something.
+            </h2>
+
+            <p class="project-intro">
+                Tell us what you need and WebNanz will get back to you.
+            </p>
+
+            <form id="projectForm">
+
+                <div class="form-group">
+
+                    <label for="customerName">
+                        Your Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="customerName"
+                        required>
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="customerEmail">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="customerEmail"
+                        required>
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="customerPhone">
+                        Phone
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="customerPhone">
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="businessName">
+                        Business Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="businessName">
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="projectType">
+                        What do you need?
+                    </label>
+
+                    <select
+                        id="projectType"
+                        required>
+
+                        <option value="">
+                            Choose a service
+                        </option>
+
+                        <option value="Web Design">
+                            Web Design
+                        </option>
+
+                        <option value="Web Development">
+                            Web Development
+                        </option>
+
+                        <option value="E-Commerce">
+                            E-Commerce
+                        </option>
+
+                        <option value="Mobile Experiences">
+                            Mobile Experiences
+                        </option>
+
+                        <option value="SEO & Performance">
+                            SEO & Performance
+                        </option>
+
+                        <option value="Maintenance & Support">
+                            Maintenance & Support
+                        </option>
+
+                        <option value="Other">
+                            Other
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="budget">
+                        Budget
+                    </label>
+
+                    <select id="budget">
+
+                        <option value="Not sure">
+                            Not sure yet
+                        </option>
+
+                        <option value="Under $500">
+                            Under $500
+                        </option>
+
+                        <option value="$500-$1,000">
+                            $500 - $1,000
+                        </option>
+
+                        <option value="$1,000-$2,500">
+                            $1,000 - $2,500
+                        </option>
+
+                        <option value="$2,500+">
+                            $2,500+
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="preferredContact">
+                        Preferred Contact
+                    </label>
+
+                    <select id="preferredContact">
+
+                        <option value="Phone">
+                            Phone
+                        </option>
+
+                        <option value="Text">
+                            Text
+                        </option>
+
+                        <option value="Email">
+                            Email
+                        </option>
+
+                        <option value="WhatsApp">
+                            WhatsApp
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="customerMessage">
+                        Your Message
+                    </label>
+
+                    <textarea
+                        id="customerMessage"
+                        rows="6"
+                        required
+                        placeholder="Tell WebNanz about your project..."></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="submit-project">
+                    SEND MESSAGE
+                </button>
+
+
+                <p
+                    class="form-status"
+                    id="formStatus">
+                </p>
+
+            </form>
+
+
+            <div class="direct-contact">
+
+                <p>
+                    Prefer to talk?
+                </p>
+
+                <a href="tel:+17876314646">
+                    (787) 631-4646
+                </a>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+    <script
+        type="module"
+        src="contact.js">
+    </script>
+
+</body>
+</html>

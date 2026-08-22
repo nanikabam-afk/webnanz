@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>WebNanz Staff Login</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="staff-page">
+
+    <main class="staff-login-screen">
+
+        <section class="staff-login-card">
+
+            <p class="system-label">
+                WEBNANZ // STAFF ACCESS
+            </p>
+
+            <h1>
+                Staff Login
+            </h1>
+
+            <p class="staff-login-subtitle">
+                Authorized access only.
+            </p>
+
+            <form id="staffLoginForm">
+
+                <div class="form-group">
+
+                    <label for="staffEmail">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="staffEmail"
+                        autocomplete="email"
+                        required
+                    >
+
+                </div>
+
+                <div class="form-group">
+
+                    <label for="staffPassword">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="staffPassword"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                </div>
+
+                <button
+                    type="submit"
+                    class="staff-submit-button"
+                >
+                    ACCESS STAFF SYSTEM
+                </button>
+
+                <p
+                    id="staffLoginStatus"
+                    class="staff-login-status"
+                ></p>
+
+            </form>
+
+            <a
+                href="index.html"
+                class="return-site-link"
+            >
+                ← RETURN TO WEBNANZ
+            </a>
+
+        </section>
+
+    </main>
+
+    <script
+        type="module"
+        src="staff-login.js"
+    ></script>
+
+</body>
+</html>

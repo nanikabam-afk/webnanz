@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>WebNanz Invoice</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+
+            padding: 30px;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: #020712;
+
+            color: white;
+        }
+
+
+        .invoice-toolbar {
+            width: min(900px, 100%);
+
+            margin:
+                0 auto 20px;
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+
+            justify-content:
+                space-between;
+        }
+
+
+        .toolbar-group {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 10px;
+        }
+
+
+        .toolbar-button {
+            padding:
+                11px 18px;
+
+            border:
+                1px solid #4defff;
+
+            border-radius: 7px;
+
+            color: #5ff6ff;
+
+            background:
+                rgba(
+                    0,
+                    229,
+                    255,
+                    0.06
+                );
+
+            text-decoration: none;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        .toolbar-button:hover {
+            color: white;
+
+            box-shadow:
+                0 0 18px
+                rgba(
+                    77,
+                    239,
+                    255,
+                    0.20
+                );
+        }
+
+
+        .invoice {
+            width: min(900px, 100%);
+
+            margin: auto;
+
+            background: white;
+
+            color: #152131;
+
+            padding: 50px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 20px 80px
+                rgba(
+                    0,
+                    0,
+                    0,
+                    0.45
+                );
+        }
+
+
+        .invoice-header {
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            gap: 30px;
+
+            padding-bottom: 30px;
+
+            border-bottom:
+                3px solid #111c31;
+        }
+
+
+        .brand h1 {
+            font-size: 38px;
+
+            letter-spacing: 2px;
+
+            color: #071426;
+        }
+
+
+        .brand-tagline {
+            margin-top: 7px;
+
+            color: #53677c;
+
+            font-size: 12px;
+
+            letter-spacing: 2px;
+        }
+
+
+        .brand-contact {
+            margin-top: 16px;
+
+            color: #53677c;
+
+            line-height: 1.7;
+        }
+
+
+        .invoice-heading {
+            text-align: right;
+        }
+
+
+        .invoice-heading h2 {
+            font-size: 30px;
+
+            color: #071426;
+        }
+
+
+        .invoice-number {
+            margin-top: 8px;
+
+            color: #53677c;
+        }
+
+
+        .invoice-meta {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    2,
+                    minmax(
+                        0,
+                        1fr
+                    )
+                );
+
+            gap: 25px;
+
+            padding:
+                30px 0;
+        }
+
+
+        .invoice-box {
+            padding: 18px;
+
+            border:
+                1px solid #d9e2eb;
+
+            border-radius: 9px;
+
+            background: #f7fafc;
+        }
+
+
+        .invoice-box small {
+            display: block;
+
+            margin-bottom: 6px;
+
+            color: #718096;
+
+            font-size: 10px;
+
+            font-weight: bold;
+
+            letter-spacing: 1px;
+
+            text-transform:
+                uppercase;
+        }
+
+
+        .invoice-box strong {
+            display: block;
+
+            margin-bottom: 4px;
+
+            font-size: 18px;
+        }
+
+
+        .invoice-box p {
+            line-height: 1.6;
+
+            color: #405365;
+        }
+
+
+        .project-section {
+            margin-top: 10px;
+        }
+
+
+        .project-section h3 {
+            margin-bottom: 15px;
+
+            color: #071426;
+        }
+
+
+        .project-description {
+            padding: 18px;
+
+            border:
+                1px solid #d9e2eb;
+
+            border-radius: 9px;
+
+            background: #f7fafc;
+
+            line-height: 1.7;
+
+            white-space: pre-wrap;
+        }
+
+
+        .financial-table {
+            width: 100%;
+
+            margin-top: 30px;
+
+            border-collapse:
+                collapse;
+        }
+
+
+        .financial-table th {
+            padding:
+                14px 12px;
+
+            text-align: left;
+
+            background: #071426;
+
+            color: white;
+
+            font-size: 12px;
+
+            letter-spacing: 1px;
+        }
+
+
+        .financial-table td {
+            padding:
+                15px 12px;
+
+            border-bottom:
+                1px solid #dfe7ee;
+        }
+
+
+        .financial-table td:last-child,
+        .financial-table th:last-child {
+            text-align: right;
+        }
+
+
+        .totals {
+            width: min(380px, 100%);
+
+            margin:
+                30px 0 0 auto;
+        }
+
+
+        .total-row {
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            gap: 20px;
+
+            padding:
+                12px 0;
+
+            border-bottom:
+                1px solid #dfe7ee;
+        }
+
+
+        .total-row.balance {
+            margin-top: 6px;
+
+            padding:
+                16px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background: #071426;
+
+            color: white;
+
+            font-size: 19px;
+
+            font-weight: bold;
+        }
+
+
+        .payment-notes {
+            margin-top: 35px;
+
+            padding: 20px;
+
+            border-left:
+                4px solid #00a8c7;
+
+            background: #f4f8fb;
+        }
+
+
+        .payment-notes h3 {
+            margin-bottom: 10px;
+        }
+
+
+        .payment-notes p {
+            line-height: 1.7;
+
+            white-space: pre-wrap;
+        }
+
+
+        .invoice-footer {
+            margin-top: 45px;
+
+            padding-top: 20px;
+
+            border-top:
+                1px solid #d9e2eb;
+
+            text-align: center;
+
+            color: #718096;
+
+            font-size: 12px;
+
+            line-height: 1.7;
+        }
+
+
+        #loadingMessage {
+            text-align: center;
+
+            padding: 50px;
+
+            color: #5ff6ff;
+        }
+
+
+        @media (max-width: 700px) {
+
+            body {
+                padding: 10px;
+            }
+
+            .invoice {
+                padding:
+                    30px 20px;
+            }
+
+            .invoice-header {
+                flex-direction:
+                    column;
+            }
+
+            .invoice-heading {
+                text-align: left;
+            }
+
+            .invoice-meta {
+                grid-template-columns:
+                    1fr;
+            }
+
+        }
+
+
+        @media print {
+
+            body {
+                padding: 0;
+
+                background: white;
+            }
+
+            .invoice-toolbar {
+                display: none;
+            }
+
+            .invoice {
+                width: 100%;
+
+                max-width: none;
+
+                box-shadow: none;
+
+                border-radius: 0;
+
+                padding: 30px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+    <div class="invoice-toolbar">
+
+        <a
+            href="admin.html"
+            class="toolbar-button"
+        >
+            ← BACK TO DASHBOARD
+        </a>
+
+
+        <div class="toolbar-group">
+
+            <button
+                id="printInvoiceButton"
+                class="toolbar-button"
+            >
+                PRINT / SAVE PDF
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <p id="loadingMessage">
+        Loading WebNanz project...
+    </p>
+
+
+    <main
+        class="invoice"
+        id="invoiceDocument"
+        hidden
+    >
+
+        <header class="invoice-header">
+
+            <div class="brand">
+
+                <h1>
+                    WEBNANZ
+                </h1>
+
+                <p class="brand-tagline">
+                    DESIGN • BUILD • LAUNCH
+                </p>
+
+                <div class="brand-contact">
+
+                    <p>
+                        Web Design & Development
+                    </p>
+
+                    <p>
+                        Puerto Rico
+                    </p>
+
+                    <p>
+                        (787) 631-4646
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="invoice-heading">
+
+                <h2>
+                    ESTIMATE / INVOICE
+                </h2>
+
+                <p
+                    class="invoice-number"
+                    id="invoiceNumber"
+                >
+                </p>
+
+            </div>
+
+        </header>
+
+
+
+        <section class="invoice-meta">
+
+            <div class="invoice-box">
+
+                <small>
+                    Bill To
+                </small>
+
+                <strong id="invoiceCustomerName">
+                </strong>
+
+                <p id="invoiceBusiness">
+                </p>
+
+                <p id="invoiceEmail">
+                </p>
+
+                <p id="invoicePhone">
+                </p>
+
+            </div>
+
+
+            <div class="invoice-box">
+
+                <small>
+                    Project Information
+                </small>
+
+                <strong id="invoiceProjectType">
+                </strong>
+
+                <p>
+                    Created:
+                    <span id="invoiceDate">
+                    </span>
+                </p>
+
+                <p>
+                    Deadline:
+                    <span id="invoiceDeadline">
+                    </span>
+                </p>
+
+                <p>
+                    Payment:
+                    <span id="invoicePaymentStatus">
+                    </span>
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <section class="project-section">
+
+            <h3>
+                Project Request
+            </h3>
+
+            <div
+                class="project-description"
+                id="invoiceProjectDescription"
+            >
+            </div>
+
+        </section>
+
+
+
+        <table class="financial-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>
+                        Description
+                    </th>
+
+                    <th>
+                        Amount
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                <tr>
+
+                    <td>
+                        WebNanz Project Quote
+                    </td>
+
+                    <td id="invoiceQuotedPrice">
+                        $0.00
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>
+                        Deposit / Payments Received
+                    </td>
+
+                    <td id="invoiceDeposit">
+                        $0.00
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+
+
+        <section class="totals">
+
+            <div class="total-row">
+
+                <span>
+                    Project Total
+                </span>
+
+                <strong id="invoiceTotal">
+                    $0.00
+                </strong>
+
+            </div>
+
+
+            <div class="total-row">
+
+                <span>
+                    Paid
+                </span>
+
+                <strong id="invoicePaid">
+                    $0.00
+                </strong>
+
+            </div>
+
+
+            <div class="total-row balance">
+
+                <span>
+                    Balance Due
+                </span>
+
+                <strong id="invoiceBalance">
+                    $0.00
+                </strong>
+
+            </div>
+
+        </section>
+
+
+
+        <section
+            class="payment-notes"
+            id="invoiceNotesSection"
+        >
+
+            <h3>
+                Payment / Invoice Notes
+            </h3>
+
+            <p id="invoicePaymentNotes">
+            </p>
+
+        </section>
+
+
+
+        <footer class="invoice-footer">
+
+            <p>
+                Thank you for choosing WebNanz.
+            </p>
+
+            <p>
+                We Design. We Build. We Elevate.
+            </p>
+
+        </footer>
+
+    </main>
+
+
+    <script
+        type="module"
+        src="invoice.js"
+    ></script>
+
+</body>
+
+</html>

@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>WebNanz Project Command Center</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="admin-page">
+
+    <main class="admin-dashboard">
+
+        <!-- =================================
+             HEADER
+        ================================== -->
+
+        <header class="admin-header">
+
+            <div>
+
+                <p class="system-label">
+                    WEBNANZ // STAFF SYSTEM
+                </p>
+
+                <h1>
+                    Project Command Center
+                </h1>
+
+            </div>
+
+
+            <button
+                id="logoutButton"
+                class="admin-logout-button"
+            >
+                LOG OUT
+            </button>
+
+        </header>
+
+
+        <!-- =================================
+             NAVIGATION
+        ================================== -->
+
+        <nav class="admin-nav">
+
+            <button
+                class="admin-nav-button active"
+                data-filter="inbox"
+            >
+
+                INBOX
+
+                <span id="inboxBadge">
+                    0
+                </span>
+
+            </button>
+
+
+            <button
+                class="admin-nav-button"
+                data-filter="active"
+            >
+
+                ACTIVE PROJECTS
+
+                <span id="activeBadge">
+                    0
+                </span>
+
+            </button>
+
+
+            <button
+                class="admin-nav-button"
+                data-filter="completed"
+            >
+
+                COMPLETED
+
+                <span id="completedBadge">
+                    0
+                </span>
+
+            </button>
+
+
+            <button
+                class="admin-nav-button"
+                data-filter="all"
+            >
+                ALL
+            </button>
+
+        </nav>
+
+
+        <!-- =================================
+             DASHBOARD COUNTERS
+        ================================== -->
+
+        <section class="admin-summary">
+
+            <div class="admin-stat">
+
+                <span id="totalMessages">
+                    0
+                </span>
+
+                <small>
+                    Total Requests
+                </small>
+
+            </div>
+
+
+            <div class="admin-stat">
+
+                <span id="newMessages">
+                    0
+                </span>
+
+                <small>
+                    New Requests
+                </small>
+
+            </div>
+
+
+            <div class="admin-stat">
+
+                <span id="activeProjects">
+                    0
+                </span>
+
+                <small>
+                    Active Projects
+                </small>
+
+            </div>
+
+
+            <div class="admin-stat">
+
+                <span id="completedProjects">
+                    0
+                </span>
+
+                <small>
+                    Completed
+                </small>
+
+            </div>
+
+        </section>
+
+
+        <!-- =================================
+             CUSTOMER PROJECT LIST
+        ================================== -->
+
+        <section class="messages-section">
+
+            <div class="messages-heading">
+
+                <div>
+
+                    <p class="system-label">
+                        WEBNANZ // CUSTOMER DATABASE
+                    </p>
+
+                    <h2 id="sectionTitle">
+                        New Requests
+                    </h2>
+
+                </div>
+
+
+                <button
+                    id="refreshMessages"
+                    class="refresh-button"
+                >
+                    REFRESH
+                </button>
+
+            </div>
+
+
+            <p
+                id="adminStatus"
+                class="admin-status"
+            >
+                Connecting...
+            </p>
+
+
+            <div
+                id="messagesContainer"
+                class="messages-container"
+            >
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================
+         FULL PROJECT PROFILE
+    ====================================== -->
+
+    <div
+        class="project-profile-modal"
+        id="projectProfileModal"
+    >
+
+        <div
+            class="project-profile-backdrop"
+            id="projectProfileBackdrop"
+        >
+        </div>
+
+
+        <section class="project-profile-panel">
+
+
+            <!-- CLOSE -->
+
+            <button
+                class="project-profile-close"
+                id="projectProfileClose"
+                aria-label="Close project"
+            >
+                ×
+            </button>
+
+
+
+            <!-- =================================
+                 PROJECT HEADER
+            ================================== -->
+
+            <div class="project-profile-top">
+
+                <div>
+
+                    <p class="system-label">
+                        WEBNANZ // PROJECT FILE
+                    </p>
+
+                    <h2 id="profileCustomerName">
+                        Customer
+                    </h2>
+
+                    <p
+                        class="profile-service"
+                        id="profileService"
+                    >
+                    </p>
+
+                </div>
+
+
+                <span
+                    class="profile-status-badge"
+                    id="profileStatusBadge"
+                >
+                    NEW
+                </span>
+
+            </div>
+
+
+
+            <!-- =================================
+                 CUSTOMER INFORMATION
+            ================================== -->
+
+            <div class="profile-section">
+
+                <h3>
+                    Customer Information
+                </h3>
+
+
+                <div class="profile-data-grid">
+
+                    <div>
+
+                        <small>
+                            Email
+                        </small>
+
+                        <span id="profileEmail">
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            Phone
+                        </small>
+
+                        <span id="profilePhone">
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            Business
+                        </small>
+
+                        <span id="profileBusiness">
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            Preferred Contact
+                        </small>
+
+                        <span id="profilePreferredContact">
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            Original Budget
+                        </small>
+
+                        <span id="profileBudget">
+                        </span>
+
+                    </div>
+
+
+                    <div>
+
+                        <small>
+                            Request Received
+                        </small>
+
+                        <span id="profileDate">
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================
+                 ORIGINAL CUSTOMER MESSAGE
+            ================================== -->
+
+            <div class="profile-section">
+
+                <h3>
+                    Original Project Request
+                </h3>
+
+
+                <div class="profile-message">
+
+                    <p id="profileMessage">
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================
+                 PROJECT STATUS
+            ================================== -->
+
+            <div class="profile-section">
+
+                <h3>
+                    Project Status
+                </h3>
+
+
+                <select id="profileStatusSelect">
+
+                    <option value="new">
+                        New
+                    </option>
+
+                    <option value="contacted">
+                        Contacted
+                    </option>
+
+                    <option value="in-progress">
+                        In Progress
+                    </option>
+
+                    <option value="completed">
+                        Completed
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- =================================
+                 PRIVATE STAFF NOTES
+            ================================== -->
+
+            <div class="profile-section">
+
+                <h3>
+                    Private Staff Notes
+                </h3>
+
+
+                <textarea
+                    id="profilePrivateNotes"
+                    rows="6"
+                    placeholder="Add private notes about this customer or project..."
+                ></textarea>
+
+
+                <div class="profile-note-actions">
+
+                    <button
+                        id="saveProfileNotes"
+                        class="profile-save-button"
+                    >
+                        SAVE NOTES
+                    </button>
+
+
+                    <span id="profileNotesStatus">
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================
+                 PROJECT FINANCIALS
+            ================================== -->
+
+            <div class="profile-section">
+
+                <h3>
+                    Project Financials
+                </h3>
+
+
+                <div class="financial-grid">
+
+
+                    <!-- QUOTED PRICE -->
+
+                    <div class="financial-field">
+
+                        <label for="profileQuotedPrice">
+                            Quoted Price
+                        </label>
+
+                        <input
+                            type="number"
+                            id="profileQuotedPrice"
+                            min="0"
+                            step="0.01"
+                            placeholder="0.00"
+                        >
+
+                    </div>
+
+
+
+                    <!-- DEPOSIT -->
+
+                    <div class="financial-field">
+
+                        <label for="profileDepositPaid">
+                            Deposit Paid
+                        </label>
+
+                        <input
+                            type="number"
+                            id="profileDepositPaid"
+                            min="0"
+                            step="0.01"
+                            placeholder="0.00"
+                        >
+
+                    </div>
+
+
+
+                    <!-- BALANCE -->
+
+                    <div class="financial-field">
+
+                        <label for="profileBalanceDue">
+                            Balance Due
+                        </label>
+
+                        <input
+                            type="number"
+                            id="profileBalanceDue"
+                            min="0"
+                            step="0.01"
+                            placeholder="0.00"
+                            readonly
+                        >
+
+                    </div>
+
+
+
+                    <!-- PAYMENT STATUS -->
+
+                    <div class="financial-field">
+
+                        <label for="profilePaymentStatus">
+                            Payment Status
+                        </label>
+
+                        <select id="profilePaymentStatus">
+
+                            <option value="not-started">
+                                Not Started
+                            </option>
+
+                            <option value="deposit-paid">
+                                Deposit Paid
+                            </option>
+
+                            <option value="partial">
+                                Partial Payment
+                            </option>
+
+                            <option value="paid">
+                                Paid in Full
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- DEADLINE -->
+
+                    <div class="financial-field">
+
+                        <label for="profileDeadline">
+                            Project Deadline
+                        </label>
+
+                        <input
+                            type="date"
+                            id="profileDeadline"
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- PAYMENT NOTES -->
+
+                <div class="financial-notes-field">
+
+                    <label for="profilePaymentNotes">
+                        Invoice / Payment Notes
+                    </label>
+
+
+                    <textarea
+                        id="profilePaymentNotes"
+                        rows="4"
+                        placeholder="Invoice number, payment plan, payment dates, remaining balance, etc."
+                    ></textarea>
+
+                </div>
+
+
+
+                <button
+                    id="saveFinancialsButton"
+                    class="profile-save-button"
+                >
+                    SAVE FINANCIALS
+                </button>
+
+
+                <span id="financialStatus">
+                </span>
+
+            </div>
+
+
+
+            <!-- =================================
+                 CUSTOMER CONTACT BUTTONS
+            ================================== -->
+            <div class="profile-section">
+
+    <h3>
+        Documents
+    </h3>
+
+    <button
+        id="generateInvoiceButton"
+        class="view-project-button"
+    >
+        GENERATE INVOICE / ESTIMATE
+    </button>
+
+</div>
+
+            <div
+                class="profile-contact-actions"
+                id="profileContactActions"
+            >
+            </div>
+
+
+
+            <!-- =================================
+                 DELETE PROJECT
+            ================================== -->
+
+            <div class="profile-danger-zone">
+
+                <button
+                    id="profileDeleteButton"
+                    class="delete-message-button"
+                >
+                    DELETE PROJECT REQUEST
+                </button>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <script
+        type="module"
+        src="admin.js"
+    ></script>
+
+</body>
+
+</html>
