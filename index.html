@@ -1,84 +1,336 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>WebNanz</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link
+        rel="stylesheet"
+        href="style.css">
+
 
     <style>
+
+        /* =========================================
+           MOVABLE LANGUAGE SWITCH
+        ========================================= */
+
         .language-switch {
-            position: fixed;
-            top: 16px;
+
+            position: fixed !important;
+
+            top: 16px !important;
             right: 16px;
-            z-index: 99999;
-            display: flex;
-            gap: 6px;
-            padding: 6px;
-            border: 1px solid rgba(0, 238, 255, 0.6);
+            left: auto;
+
+            z-index: 999999 !important;
+
+            display: flex !important;
+            align-items: center;
+
+            gap: 5px;
+
+            padding: 5px;
+
+            border:
+                1px solid rgba(
+                    0,
+                    238,
+                    255,
+                    0.65
+                );
+
             border-radius: 999px;
-            background: rgba(5, 8, 24, 0.88);
-            backdrop-filter: blur(10px);
+
+            background:
+                rgba(
+                    5,
+                    8,
+                    24,
+                    0.92
+                );
+
+            backdrop-filter:
+                blur(10px);
+
+            -webkit-backdrop-filter:
+                blur(10px);
+
             box-shadow:
-                0 0 12px rgba(0, 238, 255, 0.35),
-                0 0 22px rgba(204, 0, 255, 0.18);
+                0 0 12px
+                rgba(
+                    0,
+                    238,
+                    255,
+                    0.35
+                ),
+
+                0 0 22px
+                rgba(
+                    204,
+                    0,
+                    255,
+                    0.18
+                );
+
         }
+
+
 
         .language-button {
+
             min-width: 44px;
+
             border: 0;
+
             border-radius: 999px;
-            padding: 8px 11px;
+
+            padding:
+                8px 11px;
+
             cursor: pointer;
-            font: inherit;
-            font-size: 12px;
-            font-weight: 800;
-            letter-spacing: 0.08em;
-            color: #dffcff;
-            background: transparent;
+
+            font:
+                inherit;
+
+            font-size:
+                12px;
+
+            font-weight:
+                800;
+
+            letter-spacing:
+                0.08em;
+
+            color:
+                #dffcff;
+
+            background:
+                transparent;
+
         }
 
+
+
         .language-button.active {
-            color: #050818;
-            background: linear-gradient(135deg, #00f0ff, #d946ef);
-            box-shadow: 0 0 12px rgba(0, 240, 255, 0.55);
+
+            color:
+                #050818;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #00f0ff,
+                    #d946ef
+                );
+
+            box-shadow:
+                0 0 12px
+                rgba(
+                    0,
+                    240,
+                    255,
+                    0.55
+                );
+
         }
+
+
+
+        /* DRAG HANDLE */
+
+        .language-move-button {
+
+            width: 32px;
+            height: 32px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 0;
+
+            border:
+                1px solid
+                rgba(
+                    217,
+                    70,
+                    239,
+                    0.55
+                );
+
+            border-radius:
+                50%;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.05
+                );
+
+            color:
+                #ffffff;
+
+            font-size:
+                17px;
+
+            line-height:
+                1;
+
+            cursor:
+                grab;
+
+            touch-action:
+                none;
+
+            user-select:
+                none;
+
+            -webkit-user-select:
+                none;
+
+        }
+
+
+
+        .language-move-button:active {
+
+            cursor:
+                grabbing;
+
+        }
+
+
+
+        @media (
+            max-width: 768px
+        ) {
+
+            .language-switch {
+
+                top:
+                    10px !important;
+
+                right:
+                    10px;
+
+            }
+
+
+            .language-button {
+
+                min-width:
+                    39px;
+
+                padding:
+                    7px 9px;
+
+                font-size:
+                    11px;
+
+            }
+
+
+            .language-move-button {
+
+                width:
+                    30px;
+
+                height:
+                    30px;
+
+            }
+
+        }
+
     </style>
+
 </head>
+
+
 
 <body>
 
-    <div class="language-switch" role="group" aria-label="Language selector">
+
+
+    <!-- =========================================
+         LANGUAGE SWITCH
+    ========================================== -->
+
+   <div
+    class="language-switch notranslate"
+    id="languageSwitch"
+    role="group"
+    aria-label="Language selector"
+    translate="no">
+
+
         <button
-            type="button"
-            class="language-button active"
-            id="langEN"
-            aria-pressed="true">
-            EN
+    type="button"
+    class="language-button active notranslate"
+    id="langEN"
+    aria-pressed="true"
+    translate="no">
+    EN
+</button>
+
         </button>
+
+
+       <button
+    type="button"
+    class="language-button notranslate"
+    id="langES"
+    aria-pressed="false"
+    translate="no">
+    ES
+</button>
+
 
         <button
             type="button"
-            class="language-button"
-            id="langES"
-            aria-pressed="false">
-            ES
+            class="language-move-button"
+            id="moveLanguageSwitch"
+            aria-label="Move language selector">
+
+            ↔
+
         </button>
+
+
     </div>
+
+
+
+    <!-- =========================================
+         MAIN WEBSITE
+    ========================================== -->
 
     <main class="mobile-site">
 
-        <img
-            src="assets/images/webcraft-mobile-bg.png"
-            data-bg-en="assets/images/webcraft-mobile-bg.png"
-            data-bg-es="assets/images/webcraft-mobile-bg-es.png"
-            alt="WebNanz mobile website"
-            class="background-image"
-        >
 
-        <!-- START YOUR PROJECT -->
+       <img
+    src="assets/images/webnanz-mobile-bg.png"
+    data-bg-en="assets/images/webnanz-mobile-bg.png"
+    data-bg-es="assets/images/webcraft-mobile-bg-es.png"
+    alt="WebNanz mobile website"
+    class="background-image">
+
+
+
+        <!-- =====================================
+             START YOUR PROJECT
+        ====================================== -->
+
         <button
             class="hotspot start-project"
             id="startProjectButton"
@@ -86,12 +338,18 @@
             aria-label="Start your project">
         </button>
 
-        <!-- SERVICES -->
+
+
+        <!-- =====================================
+             SERVICES
+        ====================================== -->
+
         <button
             class="hotspot service web-design"
             data-service="web-design"
             aria-label="Web Design">
         </button>
+
 
         <button
             class="hotspot service web-development"
@@ -99,11 +357,13 @@
             aria-label="Web Development">
         </button>
 
+
         <button
             class="hotspot service ecommerce"
             data-service="ecommerce"
             aria-label="E-Commerce">
         </button>
+
 
         <button
             class="hotspot service mobile-experiences"
@@ -111,11 +371,13 @@
             aria-label="Mobile Experiences">
         </button>
 
+
         <button
             class="hotspot service seo"
             data-service="seo"
             aria-label="SEO and Performance">
         </button>
+
 
         <button
             class="hotspot service maintenance"
@@ -123,12 +385,18 @@
             aria-label="Maintenance and Support">
         </button>
 
-        <!-- PROCESS -->
+
+
+        <!-- =====================================
+             PROCESS
+        ====================================== -->
+
         <button
             class="hotspot process consult"
             data-process="consult"
             aria-label="Consult">
         </button>
+
 
         <button
             class="hotspot process design"
@@ -136,11 +404,13 @@
             aria-label="Design">
         </button>
 
+
         <button
             class="hotspot process build"
             data-process="build"
             aria-label="Build">
         </button>
+
 
         <button
             class="hotspot process launch"
@@ -148,7 +418,11 @@
             aria-label="Launch">
         </button>
 
-        <!-- CONTACT BUTTONS -->
+
+
+        <!-- =====================================
+             CONTACT BUTTONS
+        ====================================== -->
 
         <a
             class="hotspot contact whatsapp"
@@ -157,11 +431,13 @@
             aria-label="WhatsApp WebNanz">
         </a>
 
+
         <a
             class="hotspot contact phone"
             href="tel:+17876314646"
             aria-label="Call WebNanz">
         </a>
+
 
         <button
             class="hotspot contact email"
@@ -169,303 +445,486 @@
             aria-label="Message WebNanz">
         </button>
 
-        <!-- STAFF LOGIN -->
+
+
+        <!-- =====================================
+             STAFF LOGIN
+        ====================================== -->
 
         <a
             href="staff-login.html"
             class="staff-login-link"
             data-i18n="staffLogin">
+
             STAFF LOGIN
+
         </a>
+
 
     </main>
 
-    <!-- INFORMATION PANEL -->
 
-    <div class="info-modal" id="infoModal">
+
+    <!-- =========================================
+         INFORMATION PANEL
+    ========================================== -->
+
+    <div
+        class="info-modal"
+        id="infoModal">
+
 
         <div
             class="modal-backdrop"
             id="modalBackdrop">
         </div>
 
+
         <section class="info-panel">
+
 
             <button
                 class="close-modal"
                 id="closeModal"
                 aria-label="Close">
+
                 ×
+
             </button>
+
+
 
             <p
                 class="system-label"
                 data-i18n="informationLabel">
+
                 WEBNANZ // INFORMATION
+
             </p>
+
+
 
             <h2
                 id="modalTitle"
                 data-i18n="service">
+
                 Service
+
             </h2>
+
+
 
             <p
                 id="modalText"
                 data-i18n="informationPlaceholder">
+
                 Information will appear here.
+
             </p>
 
+
+
             <div id="modalFeatures"></div>
+
+
 
             <button
                 class="modal-project-button"
                 id="modalProjectButton"
                 data-i18n="startProject">
+
                 START YOUR PROJECT
+
             </button>
+
 
         </section>
 
     </div>
 
-    <!-- CUSTOMER MESSAGE / PROJECT FORM -->
+
+
+    <!-- =========================================
+         PROJECT FORM
+    ========================================== -->
 
     <div
         class="project-modal"
         id="projectModal">
+
 
         <div
             class="project-backdrop"
             id="projectBackdrop">
         </div>
 
+
         <section class="project-panel">
+
 
             <button
                 class="project-close"
                 id="projectClose"
                 aria-label="Close">
+
                 ×
+
             </button>
+
+
 
             <p
                 class="system-label"
                 data-i18n="projectRequestLabel">
+
                 WEBNANZ // PROJECT REQUEST
+
             </p>
 
-            <h2 data-i18n="letsBuild">
+
+
+            <h2
+                data-i18n="letsBuild">
+
                 Let's Build Something.
+
             </h2>
+
+
 
             <p
                 class="project-intro"
                 data-i18n="projectIntro">
+
                 Tell us what you need and WebNanz will get back to you.
+
             </p>
 
+
+
             <form id="projectForm">
+
+
+
+                <!-- NAME -->
 
                 <div class="form-group">
 
                     <label
                         for="customerName"
                         data-i18n="yourName">
+
                         Your Name
+
                     </label>
+
 
                     <input
                         type="text"
                         id="customerName"
                         required>
+
                 </div>
+
+
+
+                <!-- EMAIL -->
 
                 <div class="form-group">
 
                     <label
                         for="customerEmail"
                         data-i18n="email">
+
                         Email
+
                     </label>
+
 
                     <input
                         type="email"
                         id="customerEmail"
                         required>
+
                 </div>
+
+
+
+                <!-- PHONE -->
 
                 <div class="form-group">
 
                     <label
                         for="customerPhone"
                         data-i18n="phone">
+
                         Phone
+
                     </label>
+
 
                     <input
                         type="tel"
                         id="customerPhone">
+
                 </div>
+
+
+
+                <!-- BUSINESS NAME -->
 
                 <div class="form-group">
 
                     <label
                         for="businessName"
                         data-i18n="businessName">
+
                         Business Name
+
                     </label>
+
 
                     <input
                         type="text"
                         id="businessName">
+
                 </div>
+
+
+
+                <!-- PROJECT TYPE -->
 
                 <div class="form-group">
 
                     <label
                         for="projectType"
                         data-i18n="whatNeed">
+
                         What do you need?
+
                     </label>
+
+
 
                     <select
                         id="projectType"
                         required>
 
+
                         <option
                             value=""
                             data-i18n="chooseService">
+
                             Choose a service
+
                         </option>
+
 
                         <option
                             value="Web Design"
                             data-i18n="webDesign">
+
                             Web Design
+
                         </option>
+
 
                         <option
                             value="Web Development"
                             data-i18n="webDevelopment">
+
                             Web Development
+
                         </option>
+
 
                         <option
                             value="E-Commerce"
                             data-i18n="ecommerce">
+
                             E-Commerce
+
                         </option>
+
 
                         <option
                             value="Mobile Experiences"
                             data-i18n="mobileExperiences">
+
                             Mobile Experiences
+
                         </option>
+
 
                         <option
                             value="SEO & Performance"
                             data-i18n="seoPerformance">
+
                             SEO & Performance
+
                         </option>
+
 
                         <option
                             value="Maintenance & Support"
                             data-i18n="maintenanceSupport">
+
                             Maintenance & Support
+
                         </option>
+
 
                         <option
                             value="Other"
                             data-i18n="other">
+
                             Other
+
                         </option>
+
 
                     </select>
 
                 </div>
+
+
+
+                <!-- BUDGET -->
 
                 <div class="form-group">
 
                     <label
                         for="budget"
                         data-i18n="budget">
+
                         Budget
+
                     </label>
 
+
+
                     <select id="budget">
+
 
                         <option
                             value="Not sure"
                             data-i18n="notSure">
+
                             Not sure yet
+
                         </option>
+
 
                         <option
                             value="Under $500"
                             data-i18n="under500">
+
                             Under $500
+
                         </option>
 
-                        <option value="$500-$1,000">
+
+                        <option
+                            value="$500-$1,000">
+
                             $500 - $1,000
+
                         </option>
 
-                        <option value="$1,000-$2,500">
+
+                        <option
+                            value="$1,000-$2,500">
+
                             $1,000 - $2,500
+
                         </option>
 
-                        <option value="$2,500+">
+
+                        <option
+                            value="$2,500+">
+
                             $2,500+
+
                         </option>
+
 
                     </select>
 
                 </div>
+
+
+
+                <!-- CONTACT METHOD -->
 
                 <div class="form-group">
 
                     <label
                         for="preferredContact"
                         data-i18n="preferredContact">
+
                         Preferred Contact
+
                     </label>
 
+
+
                     <select id="preferredContact">
+
 
                         <option
                             value="Phone"
                             data-i18n="phone">
+
                             Phone
+
                         </option>
+
 
                         <option
                             value="Text"
                             data-i18n="text">
+
                             Text
+
                         </option>
+
 
                         <option
                             value="Email"
                             data-i18n="email">
+
                             Email
+
                         </option>
 
-                        <option value="WhatsApp">
+
+                        <option
+                            value="WhatsApp">
+
                             WhatsApp
+
                         </option>
+
 
                     </select>
 
                 </div>
+
+
+
+                <!-- MESSAGE -->
 
                 <div class="form-group">
 
                     <label
                         for="customerMessage"
                         data-i18n="yourMessage">
+
                         Your Message
+
                     </label>
+
+
 
                     <textarea
                         id="customerMessage"
@@ -476,358 +935,590 @@
 
                 </div>
 
+
+
+                <!-- SUBMIT -->
+
                 <button
                     type="submit"
                     class="submit-project"
                     data-i18n="sendMessage">
+
                     SEND MESSAGE
+
                 </button>
+
+
 
                 <p
                     class="form-status"
                     id="formStatus">
                 </p>
 
+
             </form>
+
+
+
+            <!-- DIRECT PHONE -->
 
             <div class="direct-contact">
 
-                <p data-i18n="preferTalk">
+
+                <p
+                    data-i18n="preferTalk">
+
                     Prefer to talk?
+
                 </p>
 
-                <a href="tel:+17876314646">
+
+                <a
+                    href="tel:+17876314646">
+
                     (787) 631-4646
+
                 </a>
 
+
             </div>
+
 
         </section>
 
     </div>
 
-    <!-- LANGUAGE SYSTEM -->
+
+
+    <!-- =========================================
+         LANGUAGE SYSTEM
+    ========================================== -->
 
     <script>
 
+
+        /* =========================================
+           TRANSLATIONS
+        ========================================== */
+
         const translations = {
+
 
             en: {
 
-                staffLogin: "STAFF LOGIN",
+
+                staffLogin:
+                    "STAFF LOGIN",
+
 
                 informationLabel:
-                "WEBNANZ // INFORMATION",
+                    "WEBNANZ // INFORMATION",
+
 
                 service:
-                "Service",
+                    "Service",
+
 
                 informationPlaceholder:
-                "Information will appear here.",
+                    "Information will appear here.",
+
 
                 startProject:
-                "START YOUR PROJECT",
+                    "START YOUR PROJECT",
+
 
                 projectRequestLabel:
-                "WEBNANZ // PROJECT REQUEST",
+                    "WEBNANZ // PROJECT REQUEST",
+
 
                 letsBuild:
-                "Let's Build Something.",
+                    "Let's Build Something.",
+
 
                 projectIntro:
-                "Tell us what you need and WebNanz will get back to you.",
+                    "Tell us what you need and WebNanz will get back to you.",
+
 
                 yourName:
-                "Your Name",
+                    "Your Name",
+
 
                 email:
-                "Email",
+                    "Email",
+
 
                 phone:
-                "Phone",
+                    "Phone",
+
 
                 businessName:
-                "Business Name",
+                    "Business Name",
+
 
                 whatNeed:
-                "What do you need?",
+                    "What do you need?",
+
 
                 chooseService:
-                "Choose a service",
+                    "Choose a service",
+
 
                 webDesign:
-                "Web Design",
+                    "Web Design",
+
 
                 webDevelopment:
-                "Web Development",
+                    "Web Development",
+
 
                 ecommerce:
-                "E-Commerce",
+                    "E-Commerce",
+
 
                 mobileExperiences:
-                "Mobile Experiences",
+                    "Mobile Experiences",
+
 
                 seoPerformance:
-                "SEO & Performance",
+                    "SEO & Performance",
+
 
                 maintenanceSupport:
-                "Maintenance & Support",
+                    "Maintenance & Support",
+
 
                 other:
-                "Other",
+                    "Other",
+
 
                 budget:
-                "Budget",
+                    "Budget",
+
 
                 notSure:
-                "Not sure yet",
+                    "Not sure yet",
+
 
                 under500:
-                "Under $500",
+                    "Under $500",
+
 
                 preferredContact:
-                "Preferred Contact",
+                    "Preferred Contact",
+
 
                 text:
-                "Text",
+                    "Text",
+
 
                 yourMessage:
-                "Your Message",
+                    "Your Message",
+
 
                 messagePlaceholder:
-                "Tell WebNanz about your project...",
+                    "Tell WebNanz about your project...",
+
 
                 sendMessage:
-                "SEND MESSAGE",
+                    "SEND MESSAGE",
+
 
                 preferTalk:
-                "Prefer to talk?"
+                    "Prefer to talk?"
+
 
             },
 
+
+
             es: {
 
+
                 staffLogin:
-                "ACCESO DEL PERSONAL",
+                    "ACCESO DEL PERSONAL",
+
 
                 informationLabel:
-                "WEBNANZ // INFORMACIÓN",
+                    "WEBNANZ // INFORMACIÓN",
+
 
                 service:
-                "Servicio",
+                    "Servicio",
+
 
                 informationPlaceholder:
-                "La información aparecerá aquí.",
+                    "La información aparecerá aquí.",
+
 
                 startProject:
-                "COMIENZA TU PROYECTO",
+                    "COMIENZA TU PROYECTO",
+
 
                 projectRequestLabel:
-                "WEBNANZ // SOLICITUD DE PROYECTO",
+                    "WEBNANZ // SOLICITUD DE PROYECTO",
+
 
                 letsBuild:
-                "Vamos a Crear Algo.",
+                    "Vamos a Crear Algo.",
+
 
                 projectIntro:
-                "Cuéntanos qué necesitas y WebNanz se comunicará contigo.",
+                    "Cuéntanos qué necesitas y WebNanz se comunicará contigo.",
+
 
                 yourName:
-                "Tu Nombre",
+                    "Tu Nombre",
+
 
                 email:
-                "Correo Electrónico",
+                    "Correo Electrónico",
+
 
                 phone:
-                "Teléfono",
+                    "Teléfono",
+
 
                 businessName:
-                "Nombre del Negocio",
+                    "Nombre del Negocio",
+
 
                 whatNeed:
-                "¿Qué necesitas?",
+                    "¿Qué necesitas?",
+
 
                 chooseService:
-                "Selecciona un servicio",
+                    "Selecciona un servicio",
+
 
                 webDesign:
-                "Diseño Web",
+                    "Diseño Web",
+
 
                 webDevelopment:
-                "Desarrollo Web",
+                    "Desarrollo Web",
+
 
                 ecommerce:
-                "Comercio Electrónico",
+                    "Comercio Electrónico",
+
 
                 mobileExperiences:
-                "Experiencias Móviles",
+                    "Experiencias Móviles",
+
 
                 seoPerformance:
-                "SEO y Rendimiento",
+                    "SEO y Rendimiento",
+
 
                 maintenanceSupport:
-                "Mantenimiento y Soporte",
+                    "Mantenimiento y Soporte",
+
 
                 other:
-                "Otro",
+                    "Otro",
+
 
                 budget:
-                "Presupuesto",
+                    "Presupuesto",
+
 
                 notSure:
-                "Aún no estoy seguro",
+                    "Aún no estoy seguro",
+
 
                 under500:
-                "Menos de $500",
+                    "Menos de $500",
+
 
                 preferredContact:
-                "Método de Contacto Preferido",
+                    "Método de Contacto Preferido",
+
 
                 text:
-                "Mensaje de Texto",
+                    "Mensaje de Texto",
+
 
                 yourMessage:
-                "Tu Mensaje",
+                    "Tu Mensaje",
+
 
                 messagePlaceholder:
-                "Cuéntale a WebNanz sobre tu proyecto...",
+                    "Cuéntale a WebNanz sobre tu proyecto...",
+
 
                 sendMessage:
-                "ENVIAR MENSAJE",
+                    "ENVIAR MENSAJE",
+
 
                 preferTalk:
-                "¿Prefieres hablar?"
+                    "¿Prefieres hablar?"
+
 
             }
 
+
         };
 
+
+
+        /* =========================================
+           LANGUAGE ELEMENTS
+        ========================================== */
+
         const langEN =
-        document.getElementById("langEN");
+            document.getElementById(
+                "langEN"
+            );
+
 
         const langES =
-        document.getElementById("langES");
+            document.getElementById(
+                "langES"
+            );
+
 
         const background =
-        document.querySelector(".background-image");
+            document.querySelector(
+                ".background-image"
+            );
 
-        function changeLanguage(language) {
+
+        const languageSwitch =
+            document.getElementById(
+                "languageSwitch"
+            );
+
+
+        const moveLanguageSwitch =
+            document.getElementById(
+                "moveLanguageSwitch"
+            );
+
+
+
+        /* =========================================
+           CHANGE LANGUAGE
+        ========================================== */
+
+        function changeLanguage(
+            language
+        ) {
+
 
             const words =
-            translations[language];
+                translations[
+                    language
+                ];
+
 
             document.documentElement.lang =
-            language;
+                language;
+
+
+
+            /* NORMAL TEXT */
 
             document
-            .querySelectorAll("[data-i18n]")
-            .forEach(element => {
+                .querySelectorAll(
+                    "[data-i18n]"
+                )
+                .forEach(
+                    element => {
 
-                const translationKey =
-                element.getAttribute("data-i18n");
 
-                if (
-                    words[translationKey] !== undefined
-                ) {
+                        const key =
+                            element.getAttribute(
+                                "data-i18n"
+                            );
 
-                    element.textContent =
-                    words[translationKey];
 
-                }
+                        if (
+                            words[
+                                key
+                            ] !== undefined
+                        ) {
 
-            });
 
-            document
-            .querySelectorAll(
-                "[data-i18n-placeholder]"
-            )
-            .forEach(element => {
+                            element.textContent =
+                                words[
+                                    key
+                                ];
 
-                const translationKey =
-                element.getAttribute(
-                    "data-i18n-placeholder"
+
+                        }
+
+
+                    }
                 );
 
-                if (
-                    words[translationKey] !== undefined
-                ) {
 
-                    element.placeholder =
-                    words[translationKey];
 
-                }
+            /* PLACEHOLDERS */
 
-            });
+            document
+                .querySelectorAll(
+                    "[data-i18n-placeholder]"
+                )
+                .forEach(
+                    element => {
+
+
+                        const key =
+                            element.getAttribute(
+                                "data-i18n-placeholder"
+                            );
+
+
+                        if (
+                            words[
+                                key
+                            ] !== undefined
+                        ) {
+
+
+                            element.placeholder =
+                                words[
+                                    key
+                                ];
+
+
+                        }
+
+
+                    }
+                );
+
+
+
+            /* ACTIVE BUTTON */
 
             langEN.classList.toggle(
                 "active",
                 language === "en"
             );
 
+
             langES.classList.toggle(
                 "active",
                 language === "es"
             );
 
+
+
             langEN.setAttribute(
                 "aria-pressed",
-                String(language === "en")
+                String(
+                    language ===
+                    "en"
+                )
             );
+
 
             langES.setAttribute(
                 "aria-pressed",
-                String(language === "es")
+                String(
+                    language ===
+                    "es"
+                )
             );
+
+
+
+            /* SAVE LANGUAGE */
 
             localStorage.setItem(
                 "webnanzLanguage",
                 language
             );
 
-            if (background) {
+
+
+            /* =====================================
+               CHANGE BACKGROUND
+            ===================================== */
+
+            if (
+                background
+            ) {
+
 
                 const englishBackground =
-                background.dataset.bgEn;
+                    background
+                        .dataset
+                        .bgEn;
+
 
                 const spanishBackground =
-                background.dataset.bgEs;
+                    background
+                        .dataset
+                        .bgEs;
+
+
 
                 if (
-                    language === "es" &&
-                    spanishBackground
+                    language ===
+                    "es"
                 ) {
 
+
                     const tester =
-                    new Image();
+                        new Image();
+
 
                     tester.onload =
-                    function () {
+                        function () {
 
-                        background.src =
-                        spanishBackground;
 
-                    };
+                            background.src =
+                                spanishBackground;
+
+
+                            background.alt =
+                                "Sitio web móvil de WebNanz";
+
+
+                        };
+
 
                     tester.onerror =
-                    function () {
+                        function () {
 
-                        background.src =
-                        englishBackground;
 
-                    };
+                            background.src =
+                                englishBackground;
+
+
+                        };
+
 
                     tester.src =
-                    spanishBackground;
+                        spanishBackground;
+
 
                 }
+
 
                 else {
 
+
                     background.src =
-                    englishBackground;
+                        englishBackground;
+
+
+                    background.alt =
+                        "WebNanz mobile website";
+
 
                 }
 
+
             }
+
+
+
+            /* =====================================
+               NOTIFY SCRIPT.JS
+            ===================================== */
 
             window.dispatchEvent(
 
@@ -835,81 +1526,552 @@
                     "webnanz-language-change",
                     {
 
+
                         detail: {
-                            language: language
+
+
+                            language:
+                                language
+
+
                         }
+
 
                     }
                 )
 
             );
 
+
         }
+
+
+
+        /* =========================================
+           EN BUTTON
+        ========================================== */
 
         langEN.addEventListener(
             "click",
             function () {
 
-                changeLanguage("en");
+
+                changeLanguage(
+                    "en"
+                );
+
 
             }
         );
+
+
+
+        /* =========================================
+           ES BUTTON
+        ========================================== */
 
         langES.addEventListener(
             "click",
             function () {
 
-                changeLanguage("es");
+
+                changeLanguage(
+                    "es"
+                );
+
 
             }
         );
 
-        const savedLanguage =
-        localStorage.getItem(
-            "webnanzLanguage"
+
+
+        /* =========================================
+           DRAG LANGUAGE SWITCH
+        ========================================== */
+
+        let draggingLanguageSwitch =
+            false;
+
+
+        let dragStartX =
+            0;
+
+
+        let switchStartLeft =
+            0;
+
+
+
+        /* START DRAG */
+
+        moveLanguageSwitch.addEventListener(
+            "pointerdown",
+            function (
+                event
+            ) {
+
+
+                event.preventDefault();
+
+
+                draggingLanguageSwitch =
+                    true;
+
+
+                dragStartX =
+                    event.clientX;
+
+
+
+                const rect =
+                    languageSwitch
+                        .getBoundingClientRect();
+
+
+
+                switchStartLeft =
+                    rect.left;
+
+
+
+                languageSwitch.style.left =
+                    rect.left +
+                    "px";
+
+
+                languageSwitch.style.right =
+                    "auto";
+
+
+
+                try {
+
+
+                    moveLanguageSwitch
+                        .setPointerCapture(
+                            event.pointerId
+                        );
+
+
+                }
+
+                catch (
+                    error
+                ) {
+
+
+                    console.log(
+                        "Pointer capture unavailable."
+                    );
+
+
+                }
+
+
+            }
         );
 
-        if (savedLanguage === "es") {
 
-            changeLanguage("es");
+
+        /* DRAG MOVE */
+
+        moveLanguageSwitch.addEventListener(
+            "pointermove",
+            function (
+                event
+            ) {
+
+
+                if (
+                    !draggingLanguageSwitch
+                ) {
+
+
+                    return;
+
+
+                }
+
+
+
+                const distanceMoved =
+                    event.clientX -
+                    dragStartX;
+
+
+
+                let newLeft =
+                    switchStartLeft +
+                    distanceMoved;
+
+
+
+                const minimumLeft =
+                    8;
+
+
+
+                const maximumLeft =
+                    window.innerWidth -
+                    languageSwitch.offsetWidth -
+                    8;
+
+
+
+                newLeft =
+                    Math.max(
+                        minimumLeft,
+                        Math.min(
+                            newLeft,
+                            maximumLeft
+                        )
+                    );
+
+
+
+                languageSwitch.style.left =
+                    newLeft +
+                    "px";
+
+
+                languageSwitch.style.right =
+                    "auto";
+
+
+            }
+        );
+
+
+
+        /* STOP DRAG */
+
+        function stopLanguageDrag(
+            event
+        ) {
+
+
+            if (
+                !draggingLanguageSwitch
+            ) {
+
+
+                return;
+
+
+            }
+
+
+
+            draggingLanguageSwitch =
+                false;
+
+
+
+            const rect =
+                languageSwitch
+                    .getBoundingClientRect();
+
+
+
+            localStorage.setItem(
+                "webnanzLanguageSwitchX",
+                String(
+                    rect.left
+                )
+            );
+
+
+
+            try {
+
+
+                moveLanguageSwitch
+                    .releasePointerCapture(
+                        event.pointerId
+                    );
+
+
+            }
+
+            catch (
+                error
+            ) {
+
+
+                /* nothing needed */
+
+
+            }
+
+
+        }
+
+
+
+        moveLanguageSwitch.addEventListener(
+            "pointerup",
+            stopLanguageDrag
+        );
+
+
+        moveLanguageSwitch.addEventListener(
+            "pointercancel",
+            stopLanguageDrag
+        );
+
+
+
+        /* =========================================
+           RESTORE SAVED SWITCH POSITION
+        ========================================== */
+
+        const savedSwitchX =
+            localStorage.getItem(
+                "webnanzLanguageSwitchX"
+            );
+
+
+        if (
+            savedSwitchX !==
+            null
+        ) {
+
+
+            let savedLeft =
+                Number(
+                    savedSwitchX
+                );
+
+
+
+            const maximumLeft =
+                Math.max(
+
+                    8,
+
+                    window.innerWidth -
+                    languageSwitch.offsetWidth -
+                    8
+
+                );
+
+
+
+            savedLeft =
+                Math.max(
+
+                    8,
+
+                    Math.min(
+                        savedLeft,
+                        maximumLeft
+                    )
+
+                );
+
+
+
+            languageSwitch.style.left =
+                savedLeft +
+                "px";
+
+
+            languageSwitch.style.right =
+                "auto";
+
+
+        }
+
+
+
+        /* =========================================
+           KEEP SWITCH ON SCREEN
+        ========================================== */
+
+        window.addEventListener(
+            "resize",
+            function () {
+
+
+                const rect =
+                    languageSwitch
+                        .getBoundingClientRect();
+
+
+
+                const maximumLeft =
+                    Math.max(
+
+                        8,
+
+                        window.innerWidth -
+                        languageSwitch.offsetWidth -
+                        8
+
+                    );
+
+
+
+                let newLeft =
+                    rect.left;
+
+
+
+                if (
+                    newLeft >
+                    maximumLeft
+                ) {
+
+
+                    newLeft =
+                        maximumLeft;
+
+
+                }
+
+
+
+                if (
+                    newLeft <
+                    8
+                ) {
+
+
+                    newLeft =
+                        8;
+
+
+                }
+
+
+
+                languageSwitch.style.left =
+                    newLeft +
+                    "px";
+
+
+                languageSwitch.style.right =
+                    "auto";
+
+
+            }
+        );
+
+
+
+        /* =========================================
+           RESTORE LANGUAGE
+        ========================================== */
+
+        const savedLanguage =
+            localStorage.getItem(
+                "webnanzLanguage"
+            );
+
+
+        if (
+            savedLanguage ===
+            "es"
+        ) {
+
+
+            changeLanguage(
+                "es"
+            );
+
 
         }
 
         else {
 
-            changeLanguage("en");
+
+            changeLanguage(
+                "en"
+            );
+
 
         }
 
+
+
+        /* =========================================
+           EXPOSE LANGUAGE TO SCRIPT.JS
+        ========================================== */
+
         window.WebNanzLanguage = {
 
+
             changeLanguage:
-            changeLanguage,
+                changeLanguage,
+
 
             getLanguage:
-            function () {
+                function () {
 
-                return (
-                    localStorage.getItem(
-                        "webnanzLanguage"
-                    ) || "en"
-                );
 
-            },
+                    return (
+
+                        localStorage.getItem(
+                            "webnanzLanguage"
+                        ) ||
+                        "en"
+
+                    );
+
+
+                },
+
 
             translations:
-            translations
+                translations
+
 
         };
 
+
     </script>
 
-    <script src="script.js"></script>
+
+
+    <!-- =========================================
+         MAIN INTERACTIVE BUTTON CODE
+    ========================================== -->
+
+    <script
+        src="script.js">
+    </script>
+
+
+
+    <!-- =========================================
+         FIREBASE CONTACT FORM
+    ========================================== -->
 
     <script
         type="module"
         src="contact.js">
     </script>
 
+<script>
+    window.addEventListener("DOMContentLoaded", function () {
+
+        const enButton =
+            document.getElementById("langEN");
+
+        const esButton =
+            document.getElementById("langES");
+
+        if (enButton) {
+            enButton.textContent = "EN";
+        }
+
+        if (esButton) {
+            esButton.textContent = "ES";
+        }
+
+    });
+</script>
+
 </body>
+
 </html>
