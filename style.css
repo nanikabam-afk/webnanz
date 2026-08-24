@@ -4132,3 +4132,103 @@ body.project-open .language-switch {
     }
 
 }
+/* =========================================
+   FIX LET'S TALK BUTTON CLICK AREAS
+========================================= */
+
+#messageButton,
+#phoneButton,
+#whatsappButton {
+    position: relative !important;
+    z-index: 9999 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
+/* Make sure decorative image/layers don't steal clicks */
+.background-image {
+    pointer-events: none !important;
+}
+/* =========================================
+   WEBNANZ CONTACT BUTTON CLICK FIX
+========================================= */
+
+.contact {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    z-index: 5000 !important;
+}
+
+/* Keep the background from intercepting clicks */
+.background-image {
+    pointer-events: none !important;
+}
+
+/* Specifically keep the envelope active */
+#messageButton {
+    pointer-events: auto !important;
+    cursor: pointer !important;
+    z-index: 6000 !important;
+}
+/* =========================================================
+   WEBNANZ LET'S TALK HOTSPOT FIX
+========================================================= */
+
+.contact {
+    top: 91.9% !important;
+    width: 8.5% !important;
+    height: 4.8% !important;
+
+    z-index: 5000 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
+
+/* WHATSAPP */
+
+.whatsapp {
+    left: 64.8% !important;
+}
+
+
+/* PHONE */
+
+.phone {
+    left: 74.2% !important;
+}
+
+
+/* EMAIL */
+
+.email {
+    left: 83.7% !important;
+}
+
+
+/* BACKGROUND MUST NEVER BLOCK BUTTONS */
+
+.background-image {
+    pointer-events: none !important;
+}
+/* FINAL CONTACT BUTTON POSITION FIX */
+
+#messageButton,
+#phoneButton,
+#whatsappButton {
+    position: absolute !important;
+    z-index: 9999 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}
+
+#messageButton {
+    position: absolute !important;
+    top: 89.4% !important;
+    left: 83.7% !important;
+    width: 8.5% !important;
+    height: 4.2% !important;
+    z-index: 9999 !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
+}

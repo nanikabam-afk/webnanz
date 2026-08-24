@@ -2044,13 +2044,28 @@
 
 
     <!-- =========================================
-         FIREBASE CONTACT FORM
-    ========================================== -->
+     EMAILJS
+========================================== -->
 
-    <script
-        type="module"
-        src="contact.js">
-    </script>
+<script
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+
+<script>
+    emailjs.init({
+        publicKey: "4o-3dRWARpQecwvPj"
+    });
+</script>
+
+
+<!-- =========================================
+     FIREBASE CONTACT FORM
+========================================== -->
+
+<script
+    type="module"
+    src="contact.js">
+</script>
 
 <script>
     window.addEventListener("DOMContentLoaded", function () {

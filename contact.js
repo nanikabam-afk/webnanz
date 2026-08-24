@@ -6,6 +6,24 @@ import {
 } from "./firebase-config.js";
 
 
+/* =========================================
+   EMAILJS SETTINGS
+========================================= */
+
+const EMAILJS_SERVICE_ID =
+    "service_2xc48c8";
+
+const EMAILJS_ADMIN_TEMPLATE_ID =
+    "template_hp14qic";
+
+const EMAILJS_CUSTOMER_TEMPLATE_ID =
+    "template_s69x9wc";
+
+
+/* =========================================
+   PAGE ELEMENTS
+========================================= */
+
 const projectModal =
     document.getElementById("projectModal");
 
@@ -35,19 +53,38 @@ const formStatus =
 const contactMessages = {
 
     en: {
-        sending: "Sending message...",
-        success: "✓ Message sent successfully!",
-        error: "Message could not be sent."
+
+        sending:
+            "Sending message...",
+
+        success:
+            "✓ Message sent successfully!",
+
+        error:
+            "Message could not be sent."
+
     },
 
+
     es: {
-        sending: "Enviando mensaje...",
-        success: "✓ ¡Mensaje enviado correctamente!",
-        error: "No se pudo enviar el mensaje."
+
+        sending:
+            "Enviando mensaje...",
+
+        success:
+            "✓ ¡Mensaje enviado correctamente!",
+
+        error:
+            "No se pudo enviar el mensaje."
+
     }
 
 };
 
+
+/* =========================================
+   CURRENT LANGUAGE
+========================================= */
 
 function getCurrentLanguage() {
 
@@ -56,7 +93,10 @@ function getCurrentLanguage() {
         window.WebNanzLanguage.getLanguage
     ) {
 
-        return window.WebNanzLanguage.getLanguage();
+        return (
+            window.WebNanzLanguage
+                .getLanguage()
+        );
 
     }
 
@@ -65,14 +105,20 @@ function getCurrentLanguage() {
 }
 
 
+/* =========================================
+   TRANSLATED STATUS MESSAGE
+========================================= */
+
 function getContactMessage(type) {
 
     const language =
         getCurrentLanguage();
 
+
     const messages =
         contactMessages[language] ||
         contactMessages.en;
+
 
     return messages[type];
 
@@ -86,14 +132,29 @@ function getContactMessage(type) {
 function openProjectForm() {
 
     if (!projectModal) {
-        console.error("projectModal was not found.");
+
+        console.error(
+            "projectModal was not found."
+        );
+
         return;
+
     }
 
-    projectModal.classList.add("active");
+
+    projectModal.classList.add(
+        "active"
+    );
+
+
+    document.body.classList.add(
+        "project-open"
+    );
+
 
     document.body.style.overflow =
         "hidden";
+
 }
 
 
@@ -107,9 +168,20 @@ function closeProjectForm() {
         return;
     }
 
-    projectModal.classList.remove("active");
 
-    document.body.style.overflow = "";
+    projectModal.classList.remove(
+        "active"
+    );
+
+
+    document.body.classList.remove(
+        "project-open"
+    );
+
+
+    document.body.style.overflow =
+        "";
+
 }
 
 
@@ -130,7 +202,9 @@ if (startProjectButton) {
         }
     );
 
-} else {
+}
+
+else {
 
     console.error(
         "START PROJECT button was not found."
@@ -195,12 +269,186 @@ document.addEventListener(
     "keydown",
     (event) => {
 
-        if (event.key === "Escape") {
+        if (
+            event.key ===
+            "Escape"
+        ) {
+
             closeProjectForm();
+
         }
 
     }
 );
+
+
+/* =========================================
+   SHORT WAIT
+   EmailJS free plan rate protection
+========================================= */
+
+function wait(milliseconds) {
+
+    return new Promise(
+        (resolve) => {
+
+            setTimeout(
+                resolve,
+                milliseconds
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   SEND EMAILJS NOTIFICATIONS
+========================================= */
+
+async function sendEmailNotifications(
+    customerData
+) {
+
+    if (!window.emailjs) {
+
+        console.error(
+            "EmailJS is not loaded."
+        );
+
+        return;
+
+    }
+
+
+    /* =====================================
+       EMAIL TO WEBNANZ
+    ===================================== */
+
+    try {
+
+        await window.emailjs.send(
+
+            EMAILJS_SERVICE_ID,
+
+            EMAILJS_ADMIN_TEMPLATE_ID,
+
+            {
+
+                customer_name:
+                    customerData.name,
+
+                customer_email:
+                    customerData.email,
+
+                customer_phone:
+                    customerData.phone,
+
+                business_name:
+                    customerData.businessName,
+
+                project_type:
+                    customerData.projectType,
+
+                budget:
+                    customerData.budget,
+
+                preferred_contact:
+                    customerData.preferredContact,
+
+                message:
+                    customerData.message
+
+            }
+
+        );
+
+
+        console.log(
+            "WebNanz notification email sent."
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "WebNanz notification email error:",
+            error
+        );
+
+    }
+
+
+    /*
+       Wait before sending the second email.
+    */
+
+    await wait(
+        1200
+    );
+
+
+    /* =====================================
+       CONFIRMATION EMAIL TO CUSTOMER
+    ===================================== */
+
+    try {
+
+        await window.emailjs.send(
+
+            EMAILJS_SERVICE_ID,
+
+            EMAILJS_CUSTOMER_TEMPLATE_ID,
+
+            {
+
+                customer_name:
+                    customerData.name,
+
+                customer_email:
+                    customerData.email,
+
+                customer_phone:
+                    customerData.phone,
+
+                business_name:
+                    customerData.businessName,
+
+                project_type:
+                    customerData.projectType,
+
+                budget:
+                    customerData.budget,
+
+                preferred_contact:
+                    customerData.preferredContact,
+
+                message:
+                    customerData.message
+
+            }
+
+        );
+
+
+        console.log(
+            "Customer confirmation email sent."
+        );
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Customer confirmation email error:",
+            error
+        );
+
+    }
+
+}
 
 
 /* =========================================
@@ -216,119 +464,208 @@ if (projectForm) {
             event.preventDefault();
 
 
+            /* =================================
+               STATUS
+            ================================= */
+
             if (formStatus) {
 
                 formStatus.textContent =
-                    getContactMessage("sending");
+                    getContactMessage(
+                        "sending"
+                    );
 
             }
 
 
+            /* =================================
+               COLLECT FORM INFORMATION
+            ================================= */
+
+            const customerData = {
+
+                name:
+                    document
+                        .getElementById(
+                            "customerName"
+                        )
+                        .value
+                        .trim(),
+
+
+                email:
+                    document
+                        .getElementById(
+                            "customerEmail"
+                        )
+                        .value
+                        .trim(),
+
+
+                phone:
+                    document
+                        .getElementById(
+                            "customerPhone"
+                        )
+                        .value
+                        .trim(),
+
+
+                businessName:
+                    document
+                        .getElementById(
+                            "businessName"
+                        )
+                        .value
+                        .trim(),
+
+
+                projectType:
+                    document
+                        .getElementById(
+                            "projectType"
+                        )
+                        .value,
+
+
+                budget:
+                    document
+                        .getElementById(
+                            "budget"
+                        )
+                        .value,
+
+
+                preferredContact:
+                    document
+                        .getElementById(
+                            "preferredContact"
+                        )
+                        .value,
+
+
+                message:
+                    document
+                        .getElementById(
+                            "customerMessage"
+                        )
+                        .value
+                        .trim()
+
+            };
+
+
             try {
 
+                /* =================================
+                   SAVE TO FIREBASE
+                ================================= */
+
                 await addDoc(
+
                     collection(
                         db,
                         "customerMessages"
                     ),
+
                     {
 
                         name:
-                            document
-                                .getElementById(
-                                    "customerName"
-                                )
-                                .value
-                                .trim(),
+                            customerData.name,
 
                         email:
-                            document
-                                .getElementById(
-                                    "customerEmail"
-                                )
-                                .value
-                                .trim(),
+                            customerData.email,
 
                         phone:
-                            document
-                                .getElementById(
-                                    "customerPhone"
-                                )
-                                .value
-                                .trim(),
+                            customerData.phone,
 
                         businessName:
-                            document
-                                .getElementById(
-                                    "businessName"
-                                )
-                                .value
-                                .trim(),
+                            customerData.businessName,
 
                         projectType:
-                            document
-                                .getElementById(
-                                    "projectType"
-                                )
-                                .value,
+                            customerData.projectType,
 
                         budget:
-                            document
-                                .getElementById(
-                                    "budget"
-                                )
-                                .value,
+                            customerData.budget,
 
                         preferredContact:
-                            document
-                                .getElementById(
-                                    "preferredContact"
-                                )
-                                .value,
+                            customerData.preferredContact,
 
                         message:
-                            document
-                                .getElementById(
-                                    "customerMessage"
-                                )
-                                .value
-                                .trim(),
+                            customerData.message,
 
-                        status: "new",
+                        status:
+                            "new",
 
                         createdAt:
                             serverTimestamp()
 
                     }
+
                 );
 
+
+                console.log(
+                    "Project request saved to Firebase."
+                );
+
+
+                /* =================================
+                   SEND EMAIL NOTIFICATIONS
+                ================================= */
+
+                await sendEmailNotifications(
+                    customerData
+                );
+
+
+                /* =================================
+                   SUCCESS MESSAGE
+                ================================= */
 
                 if (formStatus) {
 
                     formStatus.textContent =
-                        getContactMessage("success");
+                        getContactMessage(
+                            "success"
+                        );
 
                 }
 
 
+                /* =================================
+                   CLEAR FORM
+                ================================= */
+
                 projectForm.reset();
 
+
+                /* =================================
+                   CLOSE AFTER SUCCESS
+                ================================= */
 
                 setTimeout(
                     () => {
 
                         closeProjectForm();
 
+
                         if (formStatus) {
-                            formStatus.textContent = "";
+
+                            formStatus.textContent =
+                                "";
+
                         }
 
                     },
+
                     2000
                 );
 
 
-            } catch (error) {
+            }
+
+            catch (error) {
 
                 console.error(
                     "Message error:",
@@ -339,7 +676,9 @@ if (projectForm) {
                 if (formStatus) {
 
                     formStatus.textContent =
-                        getContactMessage("error");
+                        getContactMessage(
+                            "error"
+                        );
 
                 }
 
